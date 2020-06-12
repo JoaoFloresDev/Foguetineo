@@ -7,6 +7,7 @@
 import UIKit
 import GameKit
 import AVFoundation
+import StoreKit
 
 class ViewController: UIViewController,GKGameCenterControllerDelegate {
     
@@ -167,6 +168,12 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
             inGame = true
             initTutorial()
             showMenu(visible: 0)
+            
+            func rateApp() {
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                }
+            }
             
         } else if(pause) {
             returnToGame()

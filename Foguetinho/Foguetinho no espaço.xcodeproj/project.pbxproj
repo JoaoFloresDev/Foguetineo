@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09B56917BB56A125E11B34D9 /* Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE2DCD8DD54631D5C76FFC0 /* Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests.framework */; };
 		C4572B4622E6693500E3E123 /* BoxClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4572B4522E6693500E3E123 /* BoxClass.swift */; };
 		C4572B5922E6BFAD00E3E123 /* EndSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4572B5622E6BFAD00E3E123 /* EndSound1.mp3 */; };
 		C4572B5A22E6BFAD00E3E123 /* EndSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4572B5722E6BFAD00E3E123 /* EndSound2.mp3 */; };
@@ -26,8 +25,6 @@
 		C46C524922A81A5900DDABF8 /* disparoFoguete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C46C524822A81A5900DDABF8 /* disparoFoguete.mp3 */; };
 		C481468722E4FA3A000AE680 /* RocketClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C481468622E4FA3A000AE680 /* RocketClass.swift */; };
 		C48892C722A5849A007FB2E6 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48892C622A5849A007FB2E6 /* CreditsViewController.swift */; };
-		DA36C8571CC3BB32340DA77A /* Pods_Foguetinho_no_espac_o.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1742A123AC9AAFF677E1F392 /* Pods_Foguetinho_no_espac_o.framework */; };
-		FA10B3ADE5951281EABFC7E5 /* Pods_Foguetinho_no_espac_oTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D342DC1591EE4F67835020 /* Pods_Foguetinho_no_espac_oTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BD47924FCFF30564BA1272C /* Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		1742A123AC9AAFF677E1F392 /* Pods_Foguetinho_no_espac_o.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foguetinho_no_espac_o.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CE2DCD8DD54631D5C76FFC0 /* Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		525EFB6295579F4DD6AD232F /* Pods-Foguetinho no espaço.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho no espaço.release.xcconfig"; path = "Target Support Files/Pods-Foguetinho no espaço/Pods-Foguetinho no espaço.release.xcconfig"; sourceTree = "<group>"; };
-		688C97F2F81B96B8B4A4CFD3 /* Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.release.xcconfig"; path = "Target Support Files/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7CF65D07BC271CBB442A917D /* Pods-Foguetinho no espaçoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho no espaçoTests.release.xcconfig"; path = "Target Support Files/Pods-Foguetinho no espaçoTests/Pods-Foguetinho no espaçoTests.release.xcconfig"; sourceTree = "<group>"; };
-		854DEBA8FEF77F6803C8C230 /* Pods-Foguetinho no espaçoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho no espaçoTests.debug.xcconfig"; path = "Target Support Files/Pods-Foguetinho no espaçoTests/Pods-Foguetinho no espaçoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A1C28FDEA5072250F556328E /* Pods-Foguetinho no espaço.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho no espaço.debug.xcconfig"; path = "Target Support Files/Pods-Foguetinho no espaço/Pods-Foguetinho no espaço.debug.xcconfig"; sourceTree = "<group>"; };
 		C40D70F223046EDB00BD3B9E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		C40D70F323046EDB00BD3B9E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C40D70F4230478AC00BD3B9E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -85,7 +74,6 @@
 		C46C524822A81A5900DDABF8 /* disparoFoguete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = disparoFoguete.mp3; sourceTree = "<group>"; };
 		C481468622E4FA3A000AE680 /* RocketClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketClass.swift; sourceTree = "<group>"; };
 		C48892C622A5849A007FB2E6 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
-		D6D342DC1591EE4F67835020 /* Pods_Foguetinho_no_espac_oTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foguetinho_no_espac_oTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA36C8571CC3BB32340DA77A /* Pods_Foguetinho_no_espac_o.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA10B3ADE5951281EABFC7E5 /* Pods_Foguetinho_no_espac_oTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,37 +95,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09B56917BB56A125E11B34D9 /* Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		32EB05058BAABD770841EA77 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A1C28FDEA5072250F556328E /* Pods-Foguetinho no espaço.debug.xcconfig */,
-				525EFB6295579F4DD6AD232F /* Pods-Foguetinho no espaço.release.xcconfig */,
-				0BD47924FCFF30564BA1272C /* Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.debug.xcconfig */,
-				688C97F2F81B96B8B4A4CFD3 /* Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.release.xcconfig */,
-				854DEBA8FEF77F6803C8C230 /* Pods-Foguetinho no espaçoTests.debug.xcconfig */,
-				7CF65D07BC271CBB442A917D /* Pods-Foguetinho no espaçoTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		C413F0E123132A5100F8F427 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1742A123AC9AAFF677E1F392 /* Pods_Foguetinho_no_espac_o.framework */,
-				1CE2DCD8DD54631D5C76FFC0 /* Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests.framework */,
-				D6D342DC1591EE4F67835020 /* Pods_Foguetinho_no_espac_oTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C457754C22A17DF8002F9C7C = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +117,6 @@
 				C457756C22A17DFA002F9C7C /* RocketTests */,
 				C457757722A17DFA002F9C7C /* RocketUITests */,
 				C457755622A17DF8002F9C7C /* Products */,
-				C413F0E123132A5100F8F427 /* Frameworks */,
-				32EB05058BAABD770841EA77 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,11 +171,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C457757D22A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "Foguetinho no espaço" */;
 			buildPhases = (
-				211F6648F31B944302A307C4 /* [CP] Check Pods Manifest.lock */,
 				C457755122A17DF8002F9C7C /* Sources */,
 				C457755222A17DF8002F9C7C /* Frameworks */,
 				C457755322A17DF8002F9C7C /* Resources */,
-				D468E885CE7EACDFAB396ECD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,7 +188,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C457758022A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "Foguetinho no espaçoTests" */;
 			buildPhases = (
-				EE529F38F8BBFC071EDA7875 /* [CP] Check Pods Manifest.lock */,
 				C457756522A17DFA002F9C7C /* Sources */,
 				C457756622A17DFA002F9C7C /* Frameworks */,
 				C457756722A17DFA002F9C7C /* Resources */,
@@ -250,11 +206,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C457758322A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "Foguetinho no espaçoUITests" */;
 			buildPhases = (
-				FAF5E412F35B8349F50C1071 /* [CP] Check Pods Manifest.lock */,
 				C457757022A17DFA002F9C7C /* Sources */,
 				C457757122A17DFA002F9C7C /* Frameworks */,
 				C457757222A17DFA002F9C7C /* Resources */,
-				F46E559840DB3FC0851F204A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,109 +307,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		211F6648F31B944302A307C4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Foguetinho no espaço-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D468E885CE7EACDFAB396ECD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho no espaço/Pods-Foguetinho no espaço-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho no espaço/Pods-Foguetinho no espaço-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foguetinho no espaço/Pods-Foguetinho no espaço-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EE529F38F8BBFC071EDA7875 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Foguetinho no espaçoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F46E559840DB3FC0851F204A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAF5E412F35B8349F50C1071 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Foguetinho no espaço-Foguetinho no espaçoUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C457755122A17DF8002F9C7C /* Sources */ = {
@@ -645,7 +496,6 @@
 		};
 		C457757E22A17DFA002F9C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1C28FDEA5072250F556328E /* Pods-Foguetinho no espaço.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Foguetinho.entitlements;
@@ -667,7 +517,6 @@
 		};
 		C457757F22A17DFA002F9C7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 525EFB6295579F4DD6AD232F /* Pods-Foguetinho no espaço.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Foguetinho.entitlements;
@@ -689,7 +538,6 @@
 		};
 		C457758122A17DFA002F9C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 854DEBA8FEF77F6803C8C230 /* Pods-Foguetinho no espaçoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -711,7 +559,6 @@
 		};
 		C457758222A17DFA002F9C7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CF65D07BC271CBB442A917D /* Pods-Foguetinho no espaçoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -733,7 +580,6 @@
 		};
 		C457758422A17DFA002F9C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BD47924FCFF30564BA1272C /* Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -754,7 +600,6 @@
 		};
 		C457758522A17DFA002F9C7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 688C97F2F81B96B8B4A4CFD3 /* Pods-Foguetinho no espaço-Foguetinho no espaçoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
