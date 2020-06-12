@@ -16,7 +16,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     var interstitial: GADInterstitial!
     
     func createAndLoadInterstitial() -> GADInterstitial {
-      var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+      var interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
       interstitial.delegate = self
       interstitial.load(GADRequest())
       return interstitial
@@ -66,8 +66,11 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        Set Background
+        var random = Int.random(in: 0 ..< 3)
+        backGroundImg.image = UIImage(named: "Background\(random)")
 //        ADS
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
+        interstitial = GADInterstitial(adUnitID: "        ca-app-pub-8858389345934911/1816921732")
         let request = GADRequest()
         interstitial.load(request)
         interstitial.delegate = self
@@ -161,7 +164,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         if(!pause && inGame) {
             pauseGame()
             rocket.stopAnimation()
-            
+            rateApp()
         } else if(pause) {
             returnToGame()
         }
@@ -173,15 +176,15 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         self.performSegue(withIdentifier: "goInformations", sender: nil)
     }
 
-    @IBAction func sound(_ sender: Any) {
-        
-        if(soundActive) {
-            desativeSound()
-        }
-        else{
-            activeSound()
-        }
-    }
+//    @IBAction func sound(_ sender: Any) {
+//
+//        if(soundActive) {
+//            desativeSound()
+//        }
+//        else{
+//            activeSound()
+//        }
+//    }
     
     @IBAction func replay(_ sender: Any) {
         
@@ -192,7 +195,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
             inGame = true
             initTutorial()
             showMenu(visible: 0)
-            rateApp()
         } else if(pause) {
             returnToGame()
         }
@@ -279,14 +281,12 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         self.timerRocketRun = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(self.checkRocket), userInfo: nil, repeats: true)
         
         if(tutorialShowTimes < 2) {
-            print("Entrou!")
             TutorialRotate = true
             TutorialTap = true
             inGame = true
             initTutorial()
             tutorialShowTimes += 1
         }
-        print("Passou!")
     }
     
     func colisionCheck() {
@@ -611,10 +611,12 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         gestureRotateImg.alpha = 0.7
         gestureTapImg.alpha = 0
         labelTutorial.alpha = 1
-        self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/40))
-        atualRotationGesture += CGFloat(Double.pi/40)
+        self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
+        atualRotationGesture += CGFloat(Double.pi/20)
         labelTutorial.text = "Rotate to aim"
-        
+        if let timerTemp = self.timerTutotial {
+            timerTemp.invalidate()
+        }
         self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
     }
     

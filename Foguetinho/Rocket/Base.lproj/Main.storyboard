@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="fGs-Xb-uco">
             <objects>
-                <viewController id="17v-cX-zIn" customClass="ViewController" customModule="Foguetinho_no_espac_o" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="17v-cX-zIn" customClass="ViewController" customModule="Foguetinho" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zGV-rS-dC3"/>
                         <viewControllerLayoutGuide type="bottom" id="BeI-qa-yao"/>
@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="width" secondItem="eLZ-GV-Co6" secondAttribute="height" multiplier="1:1" id="5P0-zC-jAh"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="qTe-el-mFu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background0" translatesAutoresizingMaskIntoConstraints="NO" id="qTe-el-mFu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="disc1" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-s8-d6b">
@@ -284,7 +284,7 @@
         <!--Credits View Controller-->
         <scene sceneID="86z-ub-v22">
             <objects>
-                <viewController id="THF-2y-Gd2" customClass="CreditsViewController" customModule="Foguetinho_no_espac_o" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="THF-2y-Gd2" customClass="CreditsViewController" customModule="Foguetinho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="seb-uw-aAf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,7 +427,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="4834" height="3217"/>
+        <image name="Background0" width="4834" height="3217"/>
         <image name="ChangeRocketWhite" width="512" height="512"/>
         <image name="disc1" width="307" height="308"/>
         <image name="information" width="512" height="512"/>
