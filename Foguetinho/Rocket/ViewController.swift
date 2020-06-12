@@ -8,8 +8,23 @@ import UIKit
 import GameKit
 import AVFoundation
 import StoreKit
+import GoogleMobileAds
 
-class ViewController: UIViewController,GKGameCenterControllerDelegate {
+class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
+    
+//    ADS
+    var interstitial: GADInterstitial!
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+      var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+      interstitial.delegate = self
+      interstitial.load(GADRequest())
+      return interstitial
+    }
+
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+      interstitial = createAndLoadInterstitial()
+    }
     
     var numberGames = 0
     var tutorialShowTimes = 0
@@ -50,6 +65,14 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        ADS
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
+        let request = GADRequest()
+        interstitial.load(request)
+        interstitial.delegate = self
+        
+        interstitial = createAndLoadInterstitial()
         
         // Call the GC authentication controller
         authenticateLocalPlayer()
@@ -142,6 +165,10 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
         } else if(pause) {
             returnToGame()
         }
+        
+        if interstitial.isReady {
+          interstitial.present(fromRootViewController: self)
+        }
     }
     
     @IBAction func information(_ sender: Any) {
@@ -168,15 +195,15 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
             inGame = true
             initTutorial()
             showMenu(visible: 0)
-            
-            func rateApp() {
-                if #available(iOS 10.3, *) {
-                    SKStoreReviewController.requestReview()
-                }
-            }
-            
+            rateApp()
         } else if(pause) {
             returnToGame()
+        }
+    }
+    
+    func rateApp() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
         }
     }
     

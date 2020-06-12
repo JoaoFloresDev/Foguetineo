@@ -1,0 +1,818 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6EA7B5E7BB0C83428EEA4F0E /* Pods_Foguetinho_FoguetinhoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1068441B4545A76DDC4BA1C1 /* Pods_Foguetinho_FoguetinhoUITests.framework */; };
+		C1B5CCC8D680B2012E1FBB8A /* Pods_Foguetinho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C9CBDBFD1A759E2BEF85E /* Pods_Foguetinho.framework */; };
+		C4572B4622E6693500E3E123 /* BoxClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4572B4522E6693500E3E123 /* BoxClass.swift */; };
+		C4572B5922E6BFAD00E3E123 /* EndSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4572B5622E6BFAD00E3E123 /* EndSound1.mp3 */; };
+		C4572B5A22E6BFAD00E3E123 /* EndSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4572B5722E6BFAD00E3E123 /* EndSound2.mp3 */; };
+		C457755922A17DF8002F9C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457755822A17DF8002F9C7C /* AppDelegate.swift */; };
+		C457755B22A17DF8002F9C7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457755A22A17DF8002F9C7C /* ViewController.swift */; };
+		C457755E22A17DF8002F9C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C457755C22A17DF8002F9C7C /* Main.storyboard */; };
+		C457756022A17DFA002F9C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C457755F22A17DFA002F9C7C /* Assets.xcassets */; };
+		C457756322A17DFA002F9C7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C457756122A17DFA002F9C7C /* LaunchScreen.storyboard */; };
+		C457756E22A17DFA002F9C7C /* RocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457756D22A17DFA002F9C7C /* RocketTests.swift */; };
+		C457757922A17DFA002F9C7C /* RocketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457757822A17DFA002F9C7C /* RocketUITests.swift */; };
+		C457B93322A98F0B00B5D6CD /* A_Fever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C457B93222A98F0B00B5D6CD /* A_Fever.mp3 */; };
+		C457B93722A9A51D00B5D6CD /* Air_Woosh_Underwater.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C457B93622A9A51D00B5D6CD /* Air_Woosh_Underwater.mp3 */; };
+		C457B93D22A9ABA300B5D6CD /* Chosen_One.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C457B93C22A9ABA300B5D6CD /* Chosen_One.mp3 */; };
+		C457B93F22A9AE3700B5D6CD /* zapsplat_human_male_voice_says_game_over_004_15729.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C457B93E22A9AE3700B5D6CD /* zapsplat_human_male_voice_says_game_over_004_15729.mp3 */; };
+		C46C524722A813C000DDABF8 /* Dark_Tranquility.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C46C524622A813C000DDABF8 /* Dark_Tranquility.mp3 */; };
+		C46C524922A81A5900DDABF8 /* disparoFoguete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C46C524822A81A5900DDABF8 /* disparoFoguete.mp3 */; };
+		C481468722E4FA3A000AE680 /* RocketClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C481468622E4FA3A000AE680 /* RocketClass.swift */; };
+		C48892C722A5849A007FB2E6 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48892C622A5849A007FB2E6 /* CreditsViewController.swift */; };
+		CD62D4C56EAA2092BEAE6FF2 /* Pods_FoguetinhoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCADDC00DDF5A5D428F4EF /* Pods_FoguetinhoTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C457756A22A17DFA002F9C7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C457754D22A17DF8002F9C7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C457755422A17DF8002F9C7C;
+			remoteInfo = Rocket;
+		};
+		C457757522A17DFA002F9C7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C457754D22A17DF8002F9C7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C457755422A17DF8002F9C7C;
+			remoteInfo = Rocket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		088903C79E02D1E5C2023329 /* Pods-Foguetinho-FoguetinhoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho-FoguetinhoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Foguetinho-FoguetinhoUITests/Pods-Foguetinho-FoguetinhoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1068441B4545A76DDC4BA1C1 /* Pods_Foguetinho_FoguetinhoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foguetinho_FoguetinhoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14F2F4D48CEB11BF9ED0E25D /* Pods-Foguetinho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho.debug.xcconfig"; path = "Target Support Files/Pods-Foguetinho/Pods-Foguetinho.debug.xcconfig"; sourceTree = "<group>"; };
+		1C43FD0035C09009B0833141 /* Pods-FoguetinhoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoguetinhoTests.release.xcconfig"; path = "Target Support Files/Pods-FoguetinhoTests/Pods-FoguetinhoTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C5D34E2318989C1148C5C51 /* Pods-Foguetinho-FoguetinhoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho-FoguetinhoUITests.release.xcconfig"; path = "Target Support Files/Pods-Foguetinho-FoguetinhoUITests/Pods-Foguetinho-FoguetinhoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		96DCADDC00DDF5A5D428F4EF /* Pods_FoguetinhoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoguetinhoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F26A1D3F5CC560E80D901F6 /* Pods-FoguetinhoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoguetinhoTests.debug.xcconfig"; path = "Target Support Files/Pods-FoguetinhoTests/Pods-FoguetinhoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A936B4285F1FF3BA32D4B524 /* Pods-Foguetinho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho.release.xcconfig"; path = "Target Support Files/Pods-Foguetinho/Pods-Foguetinho.release.xcconfig"; sourceTree = "<group>"; };
+		C40D70F223046EDB00BD3B9E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		C40D70F323046EDB00BD3B9E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C40D70F4230478AC00BD3B9E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		C40D70F5230478AC00BD3B9E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C44C0B672327D29E0020D20B /* Foguetinho.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Foguetinho.entitlements; sourceTree = "<group>"; };
+		C4572B4522E6693500E3E123 /* BoxClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxClass.swift; sourceTree = "<group>"; };
+		C4572B5622E6BFAD00E3E123 /* EndSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EndSound1.mp3; sourceTree = "<group>"; };
+		C4572B5722E6BFAD00E3E123 /* EndSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EndSound2.mp3; sourceTree = "<group>"; };
+		C457755522A17DF8002F9C7C /* Foguetinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foguetinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C457755822A17DF8002F9C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C457755A22A17DF8002F9C7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C457755D22A17DF8002F9C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C457755F22A17DFA002F9C7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C457756222A17DFA002F9C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C457756422A17DFA002F9C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C457756922A17DFA002F9C7C /* FoguetinhoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoguetinhoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C457756D22A17DFA002F9C7C /* RocketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTests.swift; sourceTree = "<group>"; };
+		C457756F22A17DFA002F9C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C457757422A17DFA002F9C7C /* FoguetinhoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoguetinhoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C457757822A17DFA002F9C7C /* RocketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketUITests.swift; sourceTree = "<group>"; };
+		C457757A22A17DFA002F9C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C457B93222A98F0B00B5D6CD /* A_Fever.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A_Fever.mp3; sourceTree = "<group>"; };
+		C457B93622A9A51D00B5D6CD /* Air_Woosh_Underwater.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Air_Woosh_Underwater.mp3; sourceTree = "<group>"; };
+		C457B93C22A9ABA300B5D6CD /* Chosen_One.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chosen_One.mp3; sourceTree = "<group>"; };
+		C457B93E22A9AE3700B5D6CD /* zapsplat_human_male_voice_says_game_over_004_15729.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zapsplat_human_male_voice_says_game_over_004_15729.mp3; sourceTree = "<group>"; };
+		C46C524622A813C000DDABF8 /* Dark_Tranquility.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Dark_Tranquility.mp3; sourceTree = "<group>"; };
+		C46C524822A81A5900DDABF8 /* disparoFoguete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = disparoFoguete.mp3; sourceTree = "<group>"; };
+		C481468622E4FA3A000AE680 /* RocketClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketClass.swift; sourceTree = "<group>"; };
+		C48892C622A5849A007FB2E6 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		D75C9CBDBFD1A759E2BEF85E /* Pods_Foguetinho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foguetinho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C457755222A17DF8002F9C7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1B5CCC8D680B2012E1FBB8A /* Pods_Foguetinho.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457756622A17DFA002F9C7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD62D4C56EAA2092BEAE6FF2 /* Pods_FoguetinhoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457757122A17DFA002F9C7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EA7B5E7BB0C83428EEA4F0E /* Pods_Foguetinho_FoguetinhoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F0C405C098F02993CE30DB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D75C9CBDBFD1A759E2BEF85E /* Pods_Foguetinho.framework */,
+				1068441B4545A76DDC4BA1C1 /* Pods_Foguetinho_FoguetinhoUITests.framework */,
+				96DCADDC00DDF5A5D428F4EF /* Pods_FoguetinhoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C457754C22A17DF8002F9C7C = {
+			isa = PBXGroup;
+			children = (
+				C44C0B672327D29E0020D20B /* Foguetinho.entitlements */,
+				C457B93E22A9AE3700B5D6CD /* zapsplat_human_male_voice_says_game_over_004_15729.mp3 */,
+				C457B93C22A9ABA300B5D6CD /* Chosen_One.mp3 */,
+				C4572B5622E6BFAD00E3E123 /* EndSound1.mp3 */,
+				C4572B5722E6BFAD00E3E123 /* EndSound2.mp3 */,
+				C457B93622A9A51D00B5D6CD /* Air_Woosh_Underwater.mp3 */,
+				C457B93222A98F0B00B5D6CD /* A_Fever.mp3 */,
+				C46C524822A81A5900DDABF8 /* disparoFoguete.mp3 */,
+				C46C524622A813C000DDABF8 /* Dark_Tranquility.mp3 */,
+				C457755722A17DF8002F9C7C /* Rocket */,
+				C457756C22A17DFA002F9C7C /* RocketTests */,
+				C457757722A17DFA002F9C7C /* RocketUITests */,
+				C457755622A17DF8002F9C7C /* Products */,
+				F6DCF4B4F69CEF03159AD8A3 /* Pods */,
+				2F0C405C098F02993CE30DB7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C457755622A17DF8002F9C7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C457755522A17DF8002F9C7C /* Foguetinho.app */,
+				C457756922A17DFA002F9C7C /* FoguetinhoTests.xctest */,
+				C457757422A17DFA002F9C7C /* FoguetinhoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C457755722A17DF8002F9C7C /* Rocket */ = {
+			isa = PBXGroup;
+			children = (
+				C457755822A17DF8002F9C7C /* AppDelegate.swift */,
+				C457755A22A17DF8002F9C7C /* ViewController.swift */,
+				C481468622E4FA3A000AE680 /* RocketClass.swift */,
+				C4572B4522E6693500E3E123 /* BoxClass.swift */,
+				C48892C622A5849A007FB2E6 /* CreditsViewController.swift */,
+				C457755C22A17DF8002F9C7C /* Main.storyboard */,
+				C457755F22A17DFA002F9C7C /* Assets.xcassets */,
+				C457756122A17DFA002F9C7C /* LaunchScreen.storyboard */,
+				C457756422A17DFA002F9C7C /* Info.plist */,
+			);
+			path = Rocket;
+			sourceTree = "<group>";
+		};
+		C457756C22A17DFA002F9C7C /* RocketTests */ = {
+			isa = PBXGroup;
+			children = (
+				C457756D22A17DFA002F9C7C /* RocketTests.swift */,
+				C457756F22A17DFA002F9C7C /* Info.plist */,
+			);
+			path = RocketTests;
+			sourceTree = "<group>";
+		};
+		C457757722A17DFA002F9C7C /* RocketUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C457757822A17DFA002F9C7C /* RocketUITests.swift */,
+				C457757A22A17DFA002F9C7C /* Info.plist */,
+			);
+			path = RocketUITests;
+			sourceTree = "<group>";
+		};
+		F6DCF4B4F69CEF03159AD8A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14F2F4D48CEB11BF9ED0E25D /* Pods-Foguetinho.debug.xcconfig */,
+				A936B4285F1FF3BA32D4B524 /* Pods-Foguetinho.release.xcconfig */,
+				088903C79E02D1E5C2023329 /* Pods-Foguetinho-FoguetinhoUITests.debug.xcconfig */,
+				2C5D34E2318989C1148C5C51 /* Pods-Foguetinho-FoguetinhoUITests.release.xcconfig */,
+				9F26A1D3F5CC560E80D901F6 /* Pods-FoguetinhoTests.debug.xcconfig */,
+				1C43FD0035C09009B0833141 /* Pods-FoguetinhoTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C457755422A17DF8002F9C7C /* Foguetinho */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C457757D22A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "Foguetinho" */;
+			buildPhases = (
+				F96F626427AC1759A8367834 /* [CP] Check Pods Manifest.lock */,
+				C457755122A17DF8002F9C7C /* Sources */,
+				C457755222A17DF8002F9C7C /* Frameworks */,
+				C457755322A17DF8002F9C7C /* Resources */,
+				2CDA4D4A6F81DE80FCD8AB59 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Foguetinho;
+			productName = Rocket;
+			productReference = C457755522A17DF8002F9C7C /* Foguetinho.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C457756822A17DFA002F9C7C /* FoguetinhoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C457758022A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "FoguetinhoTests" */;
+			buildPhases = (
+				13649F64BB3510E74898ABC2 /* [CP] Check Pods Manifest.lock */,
+				C457756522A17DFA002F9C7C /* Sources */,
+				C457756622A17DFA002F9C7C /* Frameworks */,
+				C457756722A17DFA002F9C7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C457756B22A17DFA002F9C7C /* PBXTargetDependency */,
+			);
+			name = FoguetinhoTests;
+			productName = RocketTests;
+			productReference = C457756922A17DFA002F9C7C /* FoguetinhoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C457757322A17DFA002F9C7C /* FoguetinhoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C457758322A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "FoguetinhoUITests" */;
+			buildPhases = (
+				C2C239D204210687D96EE4E7 /* [CP] Check Pods Manifest.lock */,
+				C457757022A17DFA002F9C7C /* Sources */,
+				C457757122A17DFA002F9C7C /* Frameworks */,
+				C457757222A17DFA002F9C7C /* Resources */,
+				B630A8F2EAB48CE7F92C21EC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C457757622A17DFA002F9C7C /* PBXTargetDependency */,
+			);
+			name = FoguetinhoUITests;
+			productName = RocketUITests;
+			productReference = C457757422A17DFA002F9C7C /* FoguetinhoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C457754D22A17DF8002F9C7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Joao Flores";
+				TargetAttributes = {
+					C457755422A17DF8002F9C7C = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.GameCenter.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					C457756822A17DFA002F9C7C = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = C457755422A17DF8002F9C7C;
+					};
+					C457757322A17DFA002F9C7C = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = C457755422A17DF8002F9C7C;
+					};
+				};
+			};
+			buildConfigurationList = C457755022A17DF8002F9C7C /* Build configuration list for PBXProject "Foguetinho" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				es,
+				"pt-BR",
+			);
+			mainGroup = C457754C22A17DF8002F9C7C;
+			productRefGroup = C457755622A17DF8002F9C7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C457755422A17DF8002F9C7C /* Foguetinho */,
+				C457756822A17DFA002F9C7C /* FoguetinhoTests */,
+				C457757322A17DFA002F9C7C /* FoguetinhoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C457755322A17DF8002F9C7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C457B93F22A9AE3700B5D6CD /* zapsplat_human_male_voice_says_game_over_004_15729.mp3 in Resources */,
+				C457B93D22A9ABA300B5D6CD /* Chosen_One.mp3 in Resources */,
+				C4572B5A22E6BFAD00E3E123 /* EndSound2.mp3 in Resources */,
+				C457B93722A9A51D00B5D6CD /* Air_Woosh_Underwater.mp3 in Resources */,
+				C457B93322A98F0B00B5D6CD /* A_Fever.mp3 in Resources */,
+				C46C524922A81A5900DDABF8 /* disparoFoguete.mp3 in Resources */,
+				C46C524722A813C000DDABF8 /* Dark_Tranquility.mp3 in Resources */,
+				C457756322A17DFA002F9C7C /* LaunchScreen.storyboard in Resources */,
+				C4572B5922E6BFAD00E3E123 /* EndSound1.mp3 in Resources */,
+				C457756022A17DFA002F9C7C /* Assets.xcassets in Resources */,
+				C457755E22A17DF8002F9C7C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457756722A17DFA002F9C7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457757222A17DFA002F9C7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13649F64BB3510E74898ABC2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoguetinhoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CDA4D4A6F81DE80FCD8AB59 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho/Pods-Foguetinho-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho/Pods-Foguetinho-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foguetinho/Pods-Foguetinho-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B630A8F2EAB48CE7F92C21EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho-FoguetinhoUITests/Pods-Foguetinho-FoguetinhoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foguetinho-FoguetinhoUITests/Pods-Foguetinho-FoguetinhoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foguetinho-FoguetinhoUITests/Pods-Foguetinho-FoguetinhoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2C239D204210687D96EE4E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Foguetinho-FoguetinhoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F96F626427AC1759A8367834 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Foguetinho-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C457755122A17DF8002F9C7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C457755B22A17DF8002F9C7C /* ViewController.swift in Sources */,
+				C4572B4622E6693500E3E123 /* BoxClass.swift in Sources */,
+				C48892C722A5849A007FB2E6 /* CreditsViewController.swift in Sources */,
+				C457755922A17DF8002F9C7C /* AppDelegate.swift in Sources */,
+				C481468722E4FA3A000AE680 /* RocketClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457756522A17DFA002F9C7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C457756E22A17DFA002F9C7C /* RocketTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457757022A17DFA002F9C7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C457757922A17DFA002F9C7C /* RocketUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C457756B22A17DFA002F9C7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C457755422A17DF8002F9C7C /* Foguetinho */;
+			targetProxy = C457756A22A17DFA002F9C7C /* PBXContainerItemProxy */;
+		};
+		C457757622A17DFA002F9C7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C457755422A17DF8002F9C7C /* Foguetinho */;
+			targetProxy = C457757522A17DFA002F9C7C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C457755C22A17DF8002F9C7C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C457755D22A17DF8002F9C7C /* Base */,
+				C40D70F223046EDB00BD3B9E /* es */,
+				C40D70F4230478AC00BD3B9E /* pt-BR */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C457756122A17DFA002F9C7C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C457756222A17DFA002F9C7C /* Base */,
+				C40D70F323046EDB00BD3B9E /* es */,
+				C40D70F5230478AC00BD3B9E /* pt-BR */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C457757B22A17DFA002F9C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C457757C22A17DFA002F9C7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C457757E22A17DFA002F9C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14F2F4D48CEB11BF9ED0E25D /* Pods-Foguetinho.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Foguetinho.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				INFOPLIST_FILE = Rocket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joaoFlores.Foguetinho;
+				PRODUCT_NAME = Foguetinho;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C457757F22A17DFA002F9C7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A936B4285F1FF3BA32D4B524 /* Pods-Foguetinho.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Foguetinho.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				INFOPLIST_FILE = Rocket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joaoFlores.Foguetinho;
+				PRODUCT_NAME = Foguetinho;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C457758122A17DFA002F9C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F26A1D3F5CC560E80D901F6 /* Pods-FoguetinhoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				INFOPLIST_FILE = RocketTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Games.RocketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Foguetinho.app/Foguetinho";
+			};
+			name = Debug;
+		};
+		C457758222A17DFA002F9C7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C43FD0035C09009B0833141 /* Pods-FoguetinhoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				INFOPLIST_FILE = RocketTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Games.RocketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Foguetinho.app/Foguetinho";
+			};
+			name = Release;
+		};
+		C457758422A17DFA002F9C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 088903C79E02D1E5C2023329 /* Pods-Foguetinho-FoguetinhoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				INFOPLIST_FILE = RocketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Games.RocketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Rocket;
+			};
+			name = Debug;
+		};
+		C457758522A17DFA002F9C7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C5D34E2318989C1148C5C51 /* Pods-Foguetinho-FoguetinhoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				INFOPLIST_FILE = RocketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Games.RocketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Rocket;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C457755022A17DF8002F9C7C /* Build configuration list for PBXProject "Foguetinho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C457757B22A17DFA002F9C7C /* Debug */,
+				C457757C22A17DFA002F9C7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C457757D22A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "Foguetinho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C457757E22A17DFA002F9C7C /* Debug */,
+				C457757F22A17DFA002F9C7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C457758022A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "FoguetinhoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C457758122A17DFA002F9C7C /* Debug */,
+				C457758222A17DFA002F9C7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C457758322A17DFA002F9C7C /* Build configuration list for PBXNativeTarget "FoguetinhoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C457758422A17DFA002F9C7C /* Debug */,
+				C457758522A17DFA002F9C7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C457754D22A17DF8002F9C7C /* Project object */;
+}
