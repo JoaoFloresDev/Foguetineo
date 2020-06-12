@@ -26,7 +26,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
       interstitial = createAndLoadInterstitial()
     }
     
-    var numberGames = 0
+    var showAdsIn3games = 0
     var tutorialShowTimes = 0
     var audioEnd1:    AVAudioPlayer!
     var audioEnd2:  AVAudioPlayer!
@@ -165,10 +165,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         } else if(pause) {
             returnToGame()
         }
-        
-        if interstitial.isReady {
-          interstitial.present(fromRootViewController: self)
-        }
+
     }
     
     @IBAction func information(_ sender: Any) {
@@ -428,6 +425,16 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
             
             self.menuEffectShow()
         }
+        
+        if(showAdsIn3games >= 3) {
+            if interstitial.isReady {
+              interstitial.present(fromRootViewController: self)
+            }
+            showAdsIn3games = 0
+        }
+        else {
+            showAdsIn3games += 1
+        }
     }
     
     @objc func loop(){
@@ -604,8 +611,8 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         gestureRotateImg.alpha = 0.7
         gestureTapImg.alpha = 0
         labelTutorial.alpha = 1
-        self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
-        atualRotationGesture += CGFloat(Double.pi/20)
+        self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/40))
+        atualRotationGesture += CGFloat(Double.pi/40)
         labelTutorial.text = "Rotate to aim"
         
         self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
