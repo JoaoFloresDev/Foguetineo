@@ -1,0 +1,6 @@
+framework module Pods_Foguetinho_no_espac_o_Foguetinho_no_espac_oUITests {
+  umbrella header "Pods-Foguetinho no espaço-Foguetinho no espaçoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

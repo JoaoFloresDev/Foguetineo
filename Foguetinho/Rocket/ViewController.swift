@@ -10,6 +10,8 @@ import AVFoundation
 
 class ViewController: UIViewController,GKGameCenterControllerDelegate {
     
+    var numberGames = 0
+    var tutorialShowTimes = 0
     var audioEnd1:    AVAudioPlayer!
     var audioEnd2:  AVAudioPlayer!
     var audioPlayer1: AVAudioPlayer!
@@ -37,7 +39,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
     var velAnimateArrow = 0
     var distAnimateArrow = 0
     // game center
-    
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
@@ -78,6 +79,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
         velAnimateArrow = 10
         distAnimateArrow = 0
         var timertest = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loop), userInfo: nil, repeats: true)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,8 +133,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
         }
     }
     
-    @IBAction func unwindToGame (for segue: UIStoryboardSegue) {}
-    
     @IBAction func playPause(_ sender: Any) {
         if(!pause && inGame) {
             pauseGame()
@@ -173,7 +173,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
         }
     }
     
-    fileprivate func tap() {
+    func tap() {
         if(!pause){
             if(TutorialTap && !TutorialRotate) {
                 TutorialEnding()
@@ -247,6 +247,15 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
         
         self.timerRocketRun = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(self.checkRocket), userInfo: nil, repeats: true)
         
+        if(tutorialShowTimes < 2) {
+            print("Entrou!")
+            TutorialRotate = true
+            TutorialTap = true
+            inGame = true
+            initTutorial()
+            tutorialShowTimes += 1
+        }
+        print("Passou!")
     }
     
     func colisionCheck() {
@@ -389,23 +398,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
     
     @objc func loop(){
         
-//        distAnimateArrow += 1
-//
-//        if(distAnimateArrow < 80) {
-//
-//            changeRocketNext[1].center.x += 0.1
-//            changeRocketNext[0].center.x -= 0.1
-//
-//        } else {
-//
-//            changeRocketNext[1].center.x -= 0.1
-//            changeRocketNext[0].center.x += 0.1
-//
-//            if !(distAnimateArrow < 160) {
-//                distAnimateArrow = 0
-//            }
-//        }
-        
         UIView.animate(withDuration: 1, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
             
             if(self.distAnimateArrow == 0) {
@@ -427,7 +419,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
     
 //    best score
     func atualizeBestScore() {
-        
         if(!UserDefaults.standard.bool(forKey: "bestScore")) {
             UserDefaults.standard.set(true, forKey: "bestScore")
             UserDefaults.standard.set (0, forKey: "BS")
@@ -575,6 +566,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
 // MARK: - Tutorial Functions
     
     func initTutorial(){
+        tutorialShowTimes = 0
         gestureRotateImg.alpha = 0.7
         gestureTapImg.alpha = 0
         labelTutorial.alpha = 1
@@ -621,11 +613,9 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate {
     }
     
     func TutorialEnding() {
-        
         gestureTapImg.alpha = 0
         timerTutotial.invalidate()
         TutorialTap = false
-        
         labelTutorial.alpha = 0
     }
     
