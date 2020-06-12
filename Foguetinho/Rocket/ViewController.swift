@@ -70,7 +70,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         var random = Int.random(in: 0 ..< 3)
         backGroundImg.image = UIImage(named: "Background\(random)")
 //        ADS
-        interstitial = GADInterstitial(adUnitID: "        ca-app-pub-8858389345934911/1816921732")
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
         let request = GADRequest()
         interstitial.load(request)
         interstitial.delegate = self
