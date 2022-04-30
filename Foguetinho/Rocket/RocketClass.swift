@@ -88,7 +88,7 @@ class RocketClass {
         UIView.animate(withDuration: duration, delay: 0.5, options: UIView.AnimationOptions.curveLinear, animations: {
             
             self.rocketImg.center.x = self.backGroundImg.center.x
-            self.rocketImg.center.y = self.backGroundImg.center.y*2 - self.rocketImg.frame.height*1.5
+            self.rocketImg.center.y = self.backGroundImg.center.y*2 - self.rocketImg.frame.height*4
             let rotation = -self.atualRotationRocket + .pi/2
             self.rocketImg.transform = self.rocketImg.transform.rotated(by: rotation)
         }, completion: nil)

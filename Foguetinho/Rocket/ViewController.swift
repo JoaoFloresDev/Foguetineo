@@ -107,6 +107,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         distAnimateArrow = 0
         var timertest = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loop), userInfo: nil, repeats: true)
         
+        self.rocket.flyInitPosition(duration: TimeInterval(0.5))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -176,16 +177,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         self.performSegue(withIdentifier: "goInformations", sender: nil)
     }
 
-//    @IBAction func sound(_ sender: Any) {
-//
-//        if(soundActive) {
-//            desativeSound()
-//        }
-//        else{
-//            activeSound()
-//        }
-//    }
-    
     @IBAction func replay(_ sender: Any) {
         
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
