@@ -36,7 +36,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     var audioPlayerActual: AVAudioPlayer!
     var audioRocket: AVAudioPlayer!
     var audioBox:    AVAudioPlayer!
-    var currentRotationGesture: CGFloat = CGFloat(0)
+    var atualRotationGesture: CGFloat = CGFloat(0)
     var points: Int = 0
     var timerRocketRun: Timer!
     var timerSoundBackground: Timer!
@@ -65,6 +65,8 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        Tint Color
+        gestureRotateImg.tintColor = .lightGray
         
 //        Set Background
         let random = Int.random(in: 0 ..< 2)
@@ -90,11 +92,11 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         showMenu(visible: 0)
         initTutorial()
         
-        backGroundImg.layer.zPosition = -10
+        backGroundImg.layer.zPosition = -11
         gestureRotateImg.layer.zPosition = -9
         gestureTapImg.layer.zPosition = -9
         labelTutorial.layer.zPosition = -9
-        
+        rocketImg.layer.zPosition = -10
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(ViewController.rotate(_:)))
         self.view.addGestureRecognizer(rotate)
         
@@ -105,7 +107,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         
         velAnimateArrow = 10
         distAnimateArrow = 0
-        var timertest = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loop), userInfo: nil, repeats: true)
         
         self.rocket.flyInitPosition(duration: TimeInterval(0.5))
     }
@@ -238,22 +239,26 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     }
     
     @objc func rotate (_ gesture:UIRotationGestureRecognizer) {
-        if(!pause){
-            if(TutorialRotate) {
-                
-                self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-currentRotationGesture))
-                currentRotationGesture = CGFloat(0)
-                
-                TutorialTapInit()
-            }
-            
+        if !pause {
             let rotation = gesture.rotation * 6
             self.rocket.rotate(rotation: rotation)
             gesture.rotation = 0
         }
         
         if gesture.state == .ended {
+            if TutorialRotate {
+                TutorialTapInit()
+            }
             if((gameMode == "White" && !pause)) {
+                if #available(iOS 11.0, *) {
+                    gestureRotateImg.tintColor = UIColor(named: "lightGreen")
+                } else {
+                    gestureRotateImg.tintColor = .green
+                }
+
+                delayWithSeconds(0.3) {
+                    self.gestureRotateImg.tintColor = .lightGray
+                }
                 self.tap()
             }
         }
@@ -397,17 +402,16 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         rocket.resetParameters()
         box.resetParameters()
         timerRocketRun.invalidate()
+        let distX = self.rocket.rocketImg.center.x - self.backGroundImg.center.x
+        let distY = self.rocket.rocketImg.center.y - self.backGroundImg.center.y*2 + self.rocketImg.frame.height*1.5
+        var duration = sqrt(distX*distX + distY*distY)/500
+        duration = 0.5
+        self.rocket.flyInitPosition(duration: TimeInterval(duration))
         
         labelScore.text = String(self.points)
         self.atualizeBestScore()
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        
-        let distX = self.rocket.rocketImg.center.x - self.backGroundImg.center.x
-        let distY = self.rocket.rocketImg.center.y - self.backGroundImg.center.y*2 + self.rocketImg.frame.height*1.5
-        let duration = sqrt(distX*distX + distY*distY)/400
-        
-        self.rocket.flyInitPosition(duration: TimeInterval(duration))
 
         delayWithSeconds(TimeInterval(duration + 0.5)) {
             self.boxImg.image = (UIImage(named: "disc1")!)
@@ -451,7 +455,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
 //    best score
     func atualizeBestScore() {
-        if(!UserDefaults.standard.bool(forKey: "bestScore")) {
+        if !UserDefaults.standard.bool(forKey: "bestScore") {
             UserDefaults.standard.set(true, forKey: "bestScore")
             UserDefaults.standard.set (0, forKey: "BS")
         }
@@ -599,12 +603,18 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     func initTutorial(){
         tutorialShowTimes = 0
-        gestureRotateImg.alpha = 0.7
+        gestureRotateImg.alpha = 0.5
         gestureTapImg.alpha = 0
         labelTutorial.alpha = 1
         self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
-        currentRotationGesture += CGFloat(Double.pi/20)
-        labelTutorial.text = "Rotate to aim"
+        atualRotationGesture += CGFloat(Double.pi/20)
+        
+        if(gameMode == "White") {
+            labelTutorial.text = "Rotate to aim\nDrop to fly"
+        } else {
+            labelTutorial.text = "Rotate to aim"
+        }
+        
         if let timerTemp = self.timerTutotial {
             timerTemp.invalidate()
         }
@@ -612,12 +622,16 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     }
     
     @objc func animateGestureRotate() {
-        if(currentRotationGesture < CGFloat(Double.pi/10)) {
+        if(atualRotationGesture < CGFloat(Double.pi/10))
+        {
             self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/10))
-            currentRotationGesture += CGFloat(Double.pi/10)
-        } else {
+            atualRotationGesture += CGFloat(Double.pi/10)
+        }
+            
+        else
+        {
             self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-Double.pi/10))
-            currentRotationGesture -= CGFloat(Double.pi/10)
+            atualRotationGesture -= CGFloat(Double.pi/10)
         }
     }
     
@@ -629,7 +643,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     func TutorialTapInit() {
         gestureRotateImg.alpha = 0
-        gestureTapImg.alpha = 0.7
+        gestureTapImg.alpha = 0.5
         timerTutotial.invalidate()
         
         self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureTap), userInfo: nil, repeats: true)

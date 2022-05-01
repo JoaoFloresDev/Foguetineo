@@ -26,6 +26,12 @@ class RocketClass {
         self.rocketImg.center.y = backGroundImg.center.y*2 - self.rocketImg.frame.height*3
         
         rocketImg.frame.size = CGSize(width: 50, height: 70)
+        
+        let numberOfGames = Int(UserDefaults.standard.string(forKey: "numberOfGames") ?? "0") ?? 0
+        if numberOfGames < 4 {
+            dist = UIScreen.main.bounds.width/1200
+            UserDefaults.standard.set (numberOfGames + 1, forKey: "numberOfGames")
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,9 +59,11 @@ class RocketClass {
     }
     
     func atualizeVelocity(points: Int) {
-        if(points < 15){
+        if(points == 3) {
+            self.dist = UIScreen.main.bounds.width/400 + 0.005
+        } else if(points < 15) {
             self.dist += UIScreen.main.bounds.width / 40000//0.0025
-        } else if (points < 80) {
+        } else if (points < 35) {
             self.dist += UIScreen.main.bounds.width / 20000 //0.01
         } else if (points < 100) {
             self.dist += UIScreen.main.bounds.width / 30000
@@ -102,8 +110,14 @@ class RocketClass {
     
     func resetParameters() {
         self.rocketImg.stopAnimating()
-        self.dist = UIScreen.main.bounds.width/400
         self.moving = false
         
+        let numberOfGames = Int(UserDefaults.standard.string(forKey: "numberOfGames") ?? "0") ?? 0
+        if numberOfGames < 4 {
+            dist = UIScreen.main.bounds.width/1200
+            UserDefaults.standard.set (numberOfGames + 1, forKey: "numberOfGames")
+        } else {
+            self.dist = UIScreen.main.bounds.width/400
+        }
     }
 }
