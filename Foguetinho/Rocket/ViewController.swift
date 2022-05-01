@@ -65,6 +65,8 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        Tint Color
+        gestureRotateImg.tintColor = .lightGray
         
 //        Set Background
         let random = Int.random(in: 0 ..< 2)
@@ -248,6 +250,15 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
                 TutorialTapInit()
             }
             if((gameMode == "White" && !pause)) {
+                if #available(iOS 11.0, *) {
+                    gestureRotateImg.tintColor = UIColor(named: "lightGreen")
+                } else {
+                    gestureRotateImg.tintColor = .green
+                }
+
+                delayWithSeconds(0.3) {
+                    self.gestureRotateImg.tintColor = .lightGray
+                }
                 self.tap()
             }
         }
@@ -393,8 +404,8 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         timerRocketRun.invalidate()
         let distX = self.rocket.rocketImg.center.x - self.backGroundImg.center.x
         let distY = self.rocket.rocketImg.center.y - self.backGroundImg.center.y*2 + self.rocketImg.frame.height*1.5
-        let duration = sqrt(distX*distX + distY*distY)/800
-        
+        var duration = sqrt(distX*distX + distY*distY)/500
+        duration = 0.5
         self.rocket.flyInitPosition(duration: TimeInterval(duration))
         
         labelScore.text = String(self.points)
@@ -592,7 +603,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     func initTutorial(){
         tutorialShowTimes = 0
-        gestureRotateImg.alpha = 0.7
+        gestureRotateImg.alpha = 0.5
         gestureTapImg.alpha = 0
         labelTutorial.alpha = 1
         self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
@@ -632,7 +643,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     func TutorialTapInit() {
         gestureRotateImg.alpha = 0
-        gestureTapImg.alpha = 0.7
+        gestureTapImg.alpha = 0.5
         timerTutotial.invalidate()
         
         self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureTap), userInfo: nil, repeats: true)
