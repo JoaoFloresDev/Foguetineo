@@ -12,18 +12,18 @@ import GoogleMobileAds
 
 class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
     
-//    ADS
+    //    ADS
     var interstitial: GADInterstitial!
     
     func createAndLoadInterstitial() -> GADInterstitial {
-      var interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
-      interstitial.delegate = self
-      interstitial.load(GADRequest())
-      return interstitial
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
     }
-
+    
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-      interstitial = createAndLoadInterstitial()
+        interstitial = createAndLoadInterstitial()
     }
     
     var showAdsIn3games = 0
@@ -65,13 +65,19 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Tint Color
+        
+        // Setup Labels
+        labelFixScore.text = Text.currentScore.localized()
+        labelFixBestScore.text = Text.bestScore.localized()
+        
+        // Tint Color
         gestureRotateImg.tintColor = .lightGray
         
-//        Set Background
+        // Set Background
         let random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
-//        ADS
+        
+        // ADS
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
         let request = GADRequest()
         interstitial.load(request)
@@ -97,6 +103,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         gestureTapImg.layer.zPosition = -9
         labelTutorial.layer.zPosition = -9
         rocketImg.layer.zPosition = -10
+        boxImg.layer.zPosition = -10
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(ViewController.rotate(_:)))
         self.view.addGestureRecognizer(rotate)
         
@@ -170,14 +177,14 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         } else if(pause) {
             returnToGame()
         }
-
+        
     }
     
     @IBAction func information(_ sender: Any) {
         
         self.performSegue(withIdentifier: "goInformations", sender: nil)
     }
-
+    
     @IBAction func replay(_ sender: Any) {
         
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
@@ -255,7 +262,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
                 } else {
                     gestureRotateImg.tintColor = .green
                 }
-
+                
                 delayWithSeconds(0.3) {
                     self.gestureRotateImg.tintColor = .lightGray
                 }
@@ -264,7 +271,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         }
     }
     
-//    Funções de movimento do foguete
+    //    Funções de movimento do foguete
     @objc func checkRocket() {
         self.rocket.fly()
         self.colisionCheck()
@@ -291,22 +298,22 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         let rocketMaxX = self.rocketImg.center.x + rocketImg.frame.width/3
         let rocketMinY = self.rocketImg.center.y - rocketImg.frame.height/2.5
         let rocketMaxY = self.rocketImg.center.y + rocketImg.frame.height/2.5
-    
+        
         let boxMinX = self.boxImg.center.x - boxImg.frame.width/3
         let boxMaxX = self.boxImg.center.x + boxImg.frame.width/3
         let boxMinY = self.boxImg.center.y - boxImg.frame.height/3
         let boxMaxY = self.boxImg.center.y + boxImg.frame.height/3
-    
+        
         let bgMinX = self.backGroundImg.center.x - backGroundImg.frame.width/2 - rocketImg.frame.width/5
         let bgMaxX = self.backGroundImg.center.x + backGroundImg.frame.width/2 + rocketImg.frame.width/5
         let bgMinY = self.backGroundImg.center.y - backGroundImg.frame.height/2 - rocketImg.frame.height/5
         let bgMaxY = self.backGroundImg.center.y + backGroundImg.frame.height/2 + rocketImg.frame.height/5
-    
+        
         // foguete pegou alvo
         if (((rocketMinX >= boxMinX && rocketMinX <= boxMaxX) || (rocketMaxX >= boxMinX && rocketMaxX <= boxMaxX))
-        && ((rocketMinY >= boxMinY && rocketMinY <= boxMaxY) || (rocketMaxY >= boxMinY && rocketMaxY <= boxMaxY))) {
-    
-        if(soundActive){ audioBox.play() }
+            && ((rocketMinY >= boxMinY && rocketMinY <= boxMaxY) || (rocketMaxY >= boxMinY && rocketMaxY <= boxMaxY))) {
+            
+            if(soundActive){ audioBox.play() }
             points += 1
             
             addScoreAndSubmitToGC()
@@ -316,25 +323,25 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
             box.atualizeColorBox()
             rocket.atualizeVelocity(points: self.points)
         }
-    
+        
         // foguete na borda da tela
         else if ( rocketMinX <= bgMinX || rocketMaxX >= bgMaxX || rocketMinY <= bgMinY || rocketMaxY >= bgMaxY ) {
             
-        if(soundActive){
-            let rand = Int.random(in: 0 ..< 2)
-            switch rand {
+            if(soundActive){
+                let rand = Int.random(in: 0 ..< 2)
+                switch rand {
                 case 0:
                     audioEnd1.play()
-                
+                    
                 default:
                     audioEnd2.play()
-            }
+                }
             }
             finishGame()
         }
     }
     
-//  estados de jogo
+    //  estados de jogo
     func returnToGame() {
         
         rocket.initAnimation(mode: gameMode)
@@ -376,7 +383,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     func menuEffectShow(){
         self.alfa = 0.1
-    
+        
         self.timerAlphaMenu = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.dismisMenuEffect), userInfo: nil, repeats: true)
     }
     
@@ -412,7 +419,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         self.atualizeBestScore()
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-
+        
         delayWithSeconds(TimeInterval(duration + 0.5)) {
             self.boxImg.image = (UIImage(named: "disc1")!)
             self.labelBox.font = UIFont(name:"Futura", size: 30)
@@ -423,7 +430,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         
         if(showAdsIn3games >= 3) {
             if interstitial.isReady {
-              interstitial.present(fromRootViewController: self)
+                interstitial.present(fromRootViewController: self)
             }
             showAdsIn3games = 0
         }
@@ -453,7 +460,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         
     }
     
-//    best score
+    //    best score
     func atualizeBestScore() {
         if !UserDefaults.standard.bool(forKey: "bestScore") {
             UserDefaults.standard.set(true, forKey: "bestScore")
@@ -473,7 +480,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         labelBox.text = String(Int(points))
     }
     
-//    Funções do som
+    //    Funções do som
     func desativeSound() {
         let image = UIImage(named: "mute")
         sound.setImage(image, for: .normal)
@@ -496,7 +503,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
             self.audioPlayerActual = self.audioPlayer2
             self.audioPlayerActual.volume = 0.8
         }
-            
+        
         else if(self.audioPlayerActual == self.audioPlayer2)
         {
             self.audioPlayerActual = self.audioPlayer3
@@ -599,9 +606,9 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         }
     }
     
-// MARK: - Tutorial Functions
+    // MARK: - Tutorial Functions
     
-    func initTutorial(){
+    func initTutorial() {
         tutorialShowTimes = 0
         gestureRotateImg.alpha = 0.5
         gestureTapImg.alpha = 0
@@ -610,9 +617,9 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         atualRotationGesture += CGFloat(Double.pi/20)
         
         if(gameMode == "White") {
-            labelTutorial.text = "Rotate to aim\nDrop to fly"
+            labelTutorial.text = Text.rotateTutorialWhiteMode.localized()
         } else {
-            labelTutorial.text = "Rotate to aim"
+            labelTutorial.text = Text.rotateTutorialPinkMode.localized()
         }
         
         if let timerTemp = self.timerTutotial {
@@ -627,7 +634,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
             self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/10))
             atualRotationGesture += CGFloat(Double.pi/10)
         }
-            
+        
         else
         {
             self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-Double.pi/10))
@@ -649,8 +656,8 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureTap), userInfo: nil, repeats: true)
         
         TutorialRotate = false
+        labelTutorial.text = Text.tapTutorialPinkMode.localized()
         
-        labelTutorial.text = "Tap to fly"
         if(gameMode == "White") {
             TutorialEnding()
         }
@@ -663,7 +670,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         labelTutorial.alpha = 0
     }
     
-//    Funções de utilidades
+    //    Funções de utilidades
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             completion()
@@ -684,15 +691,13 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
                 
                 // Get the default leaderboard ID
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
-                    if error != nil { print(error)
-                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer ?? self.LEADERBOARD_ID}
+                    if error != nil {
+                        print(error)
+                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer ?? self.LEADERBOARD_ID }
                 })
-                
             } else {
-                // 3 Game center is not enabled on the users device
                 self.gcEnabled = false
                 print("Local player could not be authenticated!")
-                print(error)
             }
         }
     }
@@ -717,7 +722,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func checkGCLeaderboard(_ sender: AnyObject) {
         let gcVC = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self

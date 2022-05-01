@@ -21,7 +21,7 @@ class BoxClass {
         self.labelBox = labelBox
         self.backGroundImg = backGroundImg
         
-        let rect = CGRect(x: backGroundImg.center.x, y: backGroundImg.center.y/4, width: 100, height: 100)
+        let rect = CGRect(x: backGroundImg.center.x, y: 50, width: 100, height: 100)
         boxImg.frame = rect
         boxImg.center.x = backGroundImg.center.x
         self.labelBox.font = UIFont(name:"Futura", size: 30)
@@ -107,7 +107,7 @@ class BoxClass {
     func resetParameters() {
         colorBox = 0
         boxImg.center = backGroundImg.center
-        boxImg.center.y = backGroundImg.center.y/2
+        boxImg.center.y = 100
         labelBox.center = boxImg.center
     }
     

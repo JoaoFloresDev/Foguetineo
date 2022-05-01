@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Foguetinho
+
+  Created by Joao Victor Flores da Costa on 01/05/22.
+  Copyright © 2022 Joao Flores. All rights reserved.
+*/
+
+"rotateTutorialWhiteMode" = "Rotate and release\nUse two fingers";
+"rotateTutorialPinkMode" = "Rotate to aim\nUse two fingers";
+"tapTutorialPinkMode" = "Tap to fly";
+"currentScore" = "Your Score";
+"bestScore" = "Best Score";

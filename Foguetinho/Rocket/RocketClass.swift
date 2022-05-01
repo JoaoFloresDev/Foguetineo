@@ -28,8 +28,8 @@ class RocketClass {
         rocketImg.frame.size = CGSize(width: 50, height: 70)
         
         let numberOfGames = Int(UserDefaults.standard.string(forKey: "numberOfGames") ?? "0") ?? 0
-        if numberOfGames < 4 {
-            dist = UIScreen.main.bounds.width/1200
+        if numberOfGames < 3 {
+            dist = UIScreen.main.bounds.width/800
             UserDefaults.standard.set (numberOfGames + 1, forKey: "numberOfGames")
         }
     }
@@ -59,7 +59,7 @@ class RocketClass {
     }
     
     func atualizeVelocity(points: Int) {
-        if(points == 3) {
+        if(points == 2) {
             self.dist = UIScreen.main.bounds.width/400 + 0.005
         } else if(points < 15) {
             self.dist += UIScreen.main.bounds.width / 40000//0.0025
@@ -113,8 +113,8 @@ class RocketClass {
         self.moving = false
         
         let numberOfGames = Int(UserDefaults.standard.string(forKey: "numberOfGames") ?? "0") ?? 0
-        if numberOfGames < 4 {
-            dist = UIScreen.main.bounds.width/1200
+        if numberOfGames < 3 {
+            dist = UIScreen.main.bounds.width/800
             UserDefaults.standard.set (numberOfGames + 1, forKey: "numberOfGames")
         } else {
             self.dist = UIScreen.main.bounds.width/400

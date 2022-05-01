@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Foguetinho
+
+  Created by Joao Victor Flores da Costa on 01/05/22.
+  Copyright © 2022 Joao Flores. All rights reserved.
+*/
+
+"rotateTutorialWhiteMode" = "Rotacione e solte \nUse dois dedos";
+"rotateTutorialPinkMode" = "Rotacione para mirar\nUse dois dedos";
+"tapTutorialPinkMode" = "Toque para voar";
+"currentScore" = "Sua pontuação";
+"bestScore" = "Melhor pontuação";
