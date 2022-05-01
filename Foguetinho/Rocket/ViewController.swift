@@ -67,7 +67,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         super.viewDidLoad()
         
 //        Set Background
-        var random = Int.random(in: 0 ..< 2)
+        let random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
 //        ADS
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
@@ -90,11 +90,11 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         showMenu(visible: 0)
         initTutorial()
         
-        backGroundImg.layer.zPosition = -10
+        backGroundImg.layer.zPosition = -11
         gestureRotateImg.layer.zPosition = -9
         gestureTapImg.layer.zPosition = -9
         labelTutorial.layer.zPosition = -9
-        
+        rocketImg.layer.zPosition = -10
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(ViewController.rotate(_:)))
         self.view.addGestureRecognizer(rotate)
         
@@ -105,7 +105,6 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         
         velAnimateArrow = 10
         distAnimateArrow = 0
-        var timertest = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loop), userInfo: nil, repeats: true)
         
         self.rocket.flyInitPosition(duration: TimeInterval(0.5))
     }
@@ -238,7 +237,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     }
     
     @objc func rotate (_ gesture:UIRotationGestureRecognizer) {
-        if(!pause){
+        if !pause {
             let rotation = gesture.rotation * 6
             self.rocket.rotate(rotation: rotation)
             gesture.rotation = 0
@@ -392,17 +391,16 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         rocket.resetParameters()
         box.resetParameters()
         timerRocketRun.invalidate()
+        let distX = self.rocket.rocketImg.center.x - self.backGroundImg.center.x
+        let distY = self.rocket.rocketImg.center.y - self.backGroundImg.center.y*2 + self.rocketImg.frame.height*1.5
+        let duration = sqrt(distX*distX + distY*distY)/800
+        
+        self.rocket.flyInitPosition(duration: TimeInterval(duration))
         
         labelScore.text = String(self.points)
         self.atualizeBestScore()
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        
-        let distX = self.rocket.rocketImg.center.x - self.backGroundImg.center.x
-        let distY = self.rocket.rocketImg.center.y - self.backGroundImg.center.y*2 + self.rocketImg.frame.height*1.5
-        let duration = sqrt(distX*distX + distY*distY)/400
-        
-        self.rocket.flyInitPosition(duration: TimeInterval(duration))
 
         delayWithSeconds(TimeInterval(duration + 0.5)) {
             self.boxImg.image = (UIImage(named: "disc1")!)
@@ -446,7 +444,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
 //    best score
     func atualizeBestScore() {
-        if(!UserDefaults.standard.bool(forKey: "bestScore")) {
+        if !UserDefaults.standard.bool(forKey: "bestScore") {
             UserDefaults.standard.set(true, forKey: "bestScore")
             UserDefaults.standard.set (0, forKey: "BS")
         }
