@@ -67,7 +67,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         super.viewDidLoad()
         
 //        Set Background
-        var random = Int.random(in: 0 ..< 3)
+        var random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
 //        ADS
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
@@ -239,20 +239,15 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     
     @objc func rotate (_ gesture:UIRotationGestureRecognizer) {
         if(!pause){
-            if(TutorialRotate) {
-                
-                self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-atualRotationGesture))
-                atualRotationGesture = CGFloat(0)
-                
-                TutorialTapInit()
-            }
-            
             let rotation = gesture.rotation * 6
             self.rocket.rotate(rotation: rotation)
             gesture.rotation = 0
         }
         
         if gesture.state == .ended {
+            if TutorialRotate {
+                TutorialTapInit()
+            }
             if((gameMode == "White" && !pause)) {
                 self.tap()
             }
@@ -604,7 +599,13 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         labelTutorial.alpha = 1
         self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
         atualRotationGesture += CGFloat(Double.pi/20)
-        labelTutorial.text = "Rotate to aim"
+        
+        if(gameMode == "White") {
+            labelTutorial.text = "Rotate to aim\nDrop to fly"
+        } else {
+            labelTutorial.text = "Rotate to aim"
+        }
+        
         if let timerTemp = self.timerTutotial {
             timerTemp.invalidate()
         }
