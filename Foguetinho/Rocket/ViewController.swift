@@ -36,7 +36,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     var audioPlayerActual: AVAudioPlayer!
     var audioRocket: AVAudioPlayer!
     var audioBox:    AVAudioPlayer!
-    var atualRotationGesture: CGFloat = CGFloat(0)
+    var currentRotationGesture: CGFloat = CGFloat(0)
     var points: Int = 0
     var timerRocketRun: Timer!
     var timerSoundBackground: Timer!
@@ -67,7 +67,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         super.viewDidLoad()
         
 //        Set Background
-        var random = Int.random(in: 0 ..< 3)
+        let random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
 //        ADS
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
@@ -241,8 +241,8 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         if(!pause){
             if(TutorialRotate) {
                 
-                self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-atualRotationGesture))
-                atualRotationGesture = CGFloat(0)
+                self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-currentRotationGesture))
+                currentRotationGesture = CGFloat(0)
                 
                 TutorialTapInit()
             }
@@ -603,7 +603,7 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         gestureTapImg.alpha = 0
         labelTutorial.alpha = 1
         self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
-        atualRotationGesture += CGFloat(Double.pi/20)
+        currentRotationGesture += CGFloat(Double.pi/20)
         labelTutorial.text = "Rotate to aim"
         if let timerTemp = self.timerTutotial {
             timerTemp.invalidate()
@@ -612,16 +612,12 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     }
     
     @objc func animateGestureRotate() {
-        if(atualRotationGesture < CGFloat(Double.pi/10))
-        {
+        if(currentRotationGesture < CGFloat(Double.pi/10)) {
             self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/10))
-            atualRotationGesture += CGFloat(Double.pi/10)
-        }
-            
-        else
-        {
+            currentRotationGesture += CGFloat(Double.pi/10)
+        } else {
             self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-Double.pi/10))
-            atualRotationGesture -= CGFloat(Double.pi/10)
+            currentRotationGesture -= CGFloat(Double.pi/10)
         }
     }
     
