@@ -750,21 +750,21 @@ extension GameViewController: MenuViewControllerDelegate {
         
     }
     
-    func returnToGame() {
+    func returnTapped() {
         
     }
 }
 
 extension GameViewController: MenuViewControllerDataSource {
     func currentScore() -> Int {
-        
+        return 1
     }
     
     func bestScore() -> Int {
-        
+        return 10
     }
     
     func gameState() -> String {
-        
+        return "White"
     }
 }

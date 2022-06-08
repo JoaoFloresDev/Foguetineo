@@ -18,10 +18,11 @@ protocol MenuViewControllerDataSource {
     func currentScore() -> Int
     func bestScore() -> Int
     func gameState() -> String
+    func currentRocketMode() -> String
 }
 
 protocol MenuViewControllerDelegate {
-    func returnToGame()
+    func returnTapped()
     func updateRocketMode(mode: String)
 }
 
@@ -30,15 +31,12 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     // MARK: IBOutlets
     @IBOutlet weak var labelFixScore: UILabel!
     @IBOutlet weak var labelFixBestScore: UILabel!
-    
     @IBOutlet weak var labelScore: UILabel!
     @IBOutlet weak var labelBestScore: UILabel!
-    
     @IBOutlet weak var changeRocketImg: UIButton!
     @IBOutlet var changeRocketNext: [UIButton]!
     
     // MARK: Variables
-    var gameMode: String = "White"
     var gcEnabled = Bool()
     var gcDefaultLeaderBoard = String()
     var score = 0
@@ -54,7 +52,6 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
         super.init(coder: coder)
     }
     
@@ -82,16 +79,16 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     @IBAction func changeRocket(_ sender: UIButton) {
         if(changeRocketNext[0].alpha == 1) {
-            if(gameMode == "White") {
+            if(dataSource?.currentRocketMode() == "White") {
                 
                 let image = UIImage(named: "ChangeRocketPink")
                 changeRocketImg.setImage(image, for: .normal)
                 
-                gameMode = "Pink"
+                delegate?.updateRocketMode(mode: "Pink")
             } else {
                 let image = UIImage(named: "ChangeRocketWhite")
                 changeRocketImg.setImage(image, for: .normal)
-                gameMode = "White"
+                delegate?.updateRocketMode(mode: "White")
             }
         }
     }
