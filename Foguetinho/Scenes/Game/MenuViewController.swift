@@ -17,7 +17,6 @@ import GoogleMobileAds
 protocol MenuViewControllerDataSource {
     func currentScore() -> Int
     func bestScore() -> Int
-    func gameState() -> String
     func currentRocketMode() -> String
 }
 
@@ -45,16 +44,6 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var dataSource: MenuViewControllerDataSource?
     var delegate: MenuViewControllerDelegate?
     
-    init(dataSource: MenuViewControllerDataSource, delegate: MenuViewControllerDelegate) {
-        super.init(nibName: nil, bundle: nil)
-        self.dataSource = dataSource
-        self.delegate = delegate
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +54,7 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         labelFixScore.text = Text.currentScore.localized()
         labelFixBestScore.text = Text.bestScore.localized()
         
-        labelScore.text = "teste1"
+        labelScore.text = String(dataSource?.currentScore() ?? 0)
         labelBestScore.text = "123123"
     }
     
@@ -94,7 +83,9 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     @IBAction func playPause(_ sender: Any) {
-        print("playPause")
+        self.dismiss(animated: true) {
+            self.delegate?.returnTapped()
+        }
     }
     
     @IBAction func information(_ sender: Any) {

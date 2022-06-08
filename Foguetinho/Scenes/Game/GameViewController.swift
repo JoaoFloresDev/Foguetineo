@@ -96,6 +96,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         
         // voltar depois
 //        setupSounds()
+        soundActive = false
         
         showMenu(visible: 0)
         initTutorial()
@@ -133,6 +134,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showMenu") {
             if let nextViewController = segue.destination as? MenuViewController {
+                nextViewController.dataSource = self
+                nextViewController.delegate = self
                 nextViewController.modalPresentationStyle = .overCurrentContext
                     }
         }
@@ -190,7 +193,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         } else if(pause) {
             returnToGame()
         }
-        
     }
     
     @IBAction func information(_ sender: Any) {
@@ -198,18 +200,21 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         self.performSegue(withIdentifier: "goInformations", sender: nil)
     }
     
-    @IBAction func replay(_ sender: Any) {
-        
+    private func replayUpdateState() {
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
-            self.timerAlphaMenu.invalidate()
+//            self.timerAlphaMenu.invalidate()
             TutorialRotate = true
             TutorialTap = true
             inGame = true
             initTutorial()
-            showMenu(visible: 0)
+//            showMenu(visible: 0)
         } else if(pause) {
             returnToGame()
         }
+    }
+    
+    @IBAction func replay(_ sender: Any) {
+        replayUpdateState()
     }
     
     func rateApp() {
@@ -244,8 +249,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             }
             
             self.rocket.atualizeDirection()
-            
-            if(soundActive && inGame){ audioRocket.play() }
+            // descomentar depois!!!
+//            if(soundActive && inGame){ audioRocket.play() }
         }
     }
     
@@ -325,8 +330,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         // foguete pegou alvo
         if (((rocketMinX >= boxMinX && rocketMinX <= boxMaxX) || (rocketMaxX >= boxMinX && rocketMaxX <= boxMaxX))
             && ((rocketMinY >= boxMinY && rocketMinY <= boxMaxY) || (rocketMaxY >= boxMinY && rocketMaxY <= boxMaxY))) {
-            
-            if(soundActive){ audioBox.play() }
+  
+            // descomentar depoisi!!!
+//            if(soundActive){ audioBox.play() }
             points += 1
             
             addScoreAndSubmitToGC()
@@ -359,8 +365,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         
         rocket.initAnimation(mode: gameMode)
         
-        self.timerAlphaMenu.invalidate()
-        showMenu(visible: 0)
+//        self.timerAlphaMenu.invalidate()
+//        showMenu(visible: 0)
         pause = false
         
         let image = UIImage(named: "pause-button")
@@ -382,23 +388,24 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         pause = true
         
         labelScore.text = String(points)
-        menuEffectShow()
+//        menuEffectShow()
+        self.performSegue(withIdentifier: "showMenu", sender: nil)
     }
     
-    @objc func dismisMenuEffect() {
-        self.showMenu(visible: CGFloat(self.alfa))
-        self.alfa += 0.1
-        
-        if(alfa >= 1) {
-            self.timerAlphaMenu.invalidate()
-        }
-    }
+//    @objc func dismisMenuEffect() {
+//        self.showMenu(visible: CGFloat(self.alfa))
+//        self.alfa += 0.1
+//
+//        if(alfa >= 1) {
+//            self.timerAlphaMenu.invalidate()
+//        }
+//    }
     
-    func menuEffectShow(){
-        self.alfa = 0.1
-        
-        self.timerAlphaMenu = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.dismisMenuEffect), userInfo: nil, repeats: true)
-    }
+//    func menuEffectShow(){
+//        self.alfa = 0.1
+//
+//        self.timerAlphaMenu = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.dismisMenuEffect), userInfo: nil, repeats: true)
+//    }
     
     func showMenu(visible: CGFloat) {
         
@@ -438,7 +445,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             self.labelBox.font = UIFont(name:"Futura", size: 30)
             self.box.atualizeLabelBox(points: self.points)
             
-            self.menuEffectShow()
+//            self.menuEffectShow()
+            self.performSegue(withIdentifier: "showMenu", sender: nil)
         }
         
         if(showAdsIn3games >= 3) {
@@ -736,12 +744,16 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func checkGCLeaderboard(_ sender: AnyObject) {
+    private func showGCBoard() {
         let gcVC = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = .leaderboards
         gcVC.leaderboardIdentifier = LEADERBOARD_ID
         present(gcVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func checkGCLeaderboard(_ sender: AnyObject) {
+        showGCBoard()
     }
 }
 
@@ -751,20 +763,20 @@ extension GameViewController: MenuViewControllerDelegate {
     }
     
     func returnTapped() {
-        
+        replayUpdateState()
     }
 }
 
 extension GameViewController: MenuViewControllerDataSource {
+    func currentRocketMode() -> String {
+        return "White"
+    }
+    
     func currentScore() -> Int {
-        return 1
+        return points
     }
     
     func bestScore() -> Int {
         return 10
-    }
-    
-    func gameState() -> String {
-        return "White"
     }
 }
