@@ -278,7 +278,6 @@
                         <outletCollection property="changeRocketNext" destination="j1e-9N-AKL" collectionClass="NSMutableArray" id="C2S-fv-xau"/>
                         <outletCollection property="changeRocketNext" destination="x2r-2G-4UV" collectionClass="NSMutableArray" id="he4-6H-9kb"/>
                         <outletCollection property="changeRocketNext" destination="rWE-bS-yt6" collectionClass="NSMutableArray" id="fG2-1z-xvX"/>
-                        <segue destination="qa2-d6-Msu" kind="presentation" identifier="goInformations" id="StT-n9-ChO"/>
                         <segue destination="0HL-Vs-JV0" kind="show" identifier="showMenu" id="8JL-Jc-e0e"/>
                     </connections>
                 </viewController>
@@ -290,14 +289,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="57.589285714285708"/>
-        </scene>
-        <!--Credits-->
-        <scene sceneID="QJh-pe-loP">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Credits" id="qa2-d6-Msu" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LW4-Q5-D2O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1246" y="206"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="wvd-5s-I6V">
@@ -365,6 +356,9 @@
                                             <constraint firstAttribute="width" secondItem="Mch-kZ-ibI" secondAttribute="height" multiplier="1:1" id="33e-cc-Zft"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="replay"/>
+                                        <connections>
+                                            <action selector="playPause:" destination="0HL-Vs-JV0" eventType="touchUpInside" id="QH4-If-vcS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Une-kJ-skx">
                                         <rect key="frame" x="277.5" y="263.5" width="75.5" height="75"/>
@@ -496,7 +490,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1752" y="58"/>
+            <point key="canvasLocation" x="1222" y="58"/>
         </scene>
         <!--Credits-->
         <scene sceneID="CcF-Am-1kk">
@@ -506,7 +500,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czF-th-GlH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2307" y="58"/>
+            <point key="canvasLocation" x="1873" y="58"/>
         </scene>
     </scenes>
     <resources>

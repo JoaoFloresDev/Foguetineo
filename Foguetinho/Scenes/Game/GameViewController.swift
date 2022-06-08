@@ -94,7 +94,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         rocket = RocketClass(rocketImg: self.rocketImg, backGroundImg: self.backGroundImg)
         box = BoxClass(boxImg: self.boxImg, labelBox: self.labelBox, backGroundImg: self.backGroundImg)
         
-        setupSounds()
+        // voltar depois
+//        setupSounds()
+        
         showMenu(visible: 0)
         initTutorial()
         
@@ -172,10 +174,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
                 gameMode = "Pink"
             } else {
                 rocketImg.image = (UIImage(named: "rocketWhite1")!)
-                
+
                 let image = UIImage(named: "ChangeRocketWhite")
                 changeRocketImg.setImage(image, for: .normal)
-                
                 gameMode = "White"
             }
         }
@@ -741,5 +742,29 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         gcVC.viewState = .leaderboards
         gcVC.leaderboardIdentifier = LEADERBOARD_ID
         present(gcVC, animated: true, completion: nil)
+    }
+}
+
+extension GameViewController: MenuViewControllerDelegate {
+    func updateRocketMode(mode: String) {
+        
+    }
+    
+    func returnToGame() {
+        
+    }
+}
+
+extension GameViewController: MenuViewControllerDataSource {
+    func currentScore() -> Int {
+        
+    }
+    
+    func bestScore() -> Int {
+        
+    }
+    
+    func gameState() -> String {
+        
     }
 }
