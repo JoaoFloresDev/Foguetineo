@@ -1,4 +1,4 @@
-//  ViewController.swift
+//  GameViewController.swift
 //  Rocket
 
 //  Created by Joao Flores on 31/05/19.
@@ -10,7 +10,7 @@ import AVFoundation
 import StoreKit
 import GoogleMobileAds
 
-class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
+class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
     
     //    ADS
     var interstitial: GADInterstitial!
@@ -104,10 +104,10 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         labelTutorial.layer.zPosition = -9
         rocketImg.layer.zPosition = -10
         boxImg.layer.zPosition = -10
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(ViewController.rotate(_:)))
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(GameViewController.rotate(_:)))
         self.view.addGestureRecognizer(rotate)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.tap(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(GameViewController.tap(_:)))
         self.view.addGestureRecognizer(tap)
         
         addScoreAndSubmitToGC()
@@ -128,6 +128,14 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
         super.didReceiveMemoryWarning()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showMenu") {
+            if let nextViewController = segue.destination as? MenuViewController {
+                nextViewController.modalPresentationStyle = .overCurrentContext
+                    }
+        }
+    }
+    
     @IBOutlet weak var labelTutorial: UILabel!
     @IBOutlet weak var gestureTapImg: UIImageView!
     @IBOutlet weak var gestureRotateImg: UIImageView!
@@ -146,6 +154,10 @@ class ViewController: UIViewController,GKGameCenterControllerDelegate, GADInters
     @IBOutlet weak var information: UIButton!
     @IBOutlet weak var changeRocketImg: UIButton!
     @IBOutlet var changeRocketNext: [UIButton]!
+    
+    @IBAction func testButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "showMenu", sender: nil)
+    }
     
     @IBAction func changeRocket(_ sender: UIButton) {
         if(changeRocketNext[0].alpha == 1) {
