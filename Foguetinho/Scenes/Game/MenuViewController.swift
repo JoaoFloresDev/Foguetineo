@@ -15,8 +15,8 @@ import StoreKit
 import GoogleMobileAds
 
 protocol MenuViewControllerDataSource {
-    func currentScore() -> Int
-    func bestScore() -> Int
+    func currentScore() -> String
+    func bestScore() -> String
     func currentRocketMode() -> String
 }
 
@@ -46,24 +46,25 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor.clear
         view.isOpaque = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(dataSource?.currentRocketMode() == "White") {
+            let image = UIImage(named: "ChangeRocketWhite")
+            changeRocketImg.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "ChangeRocketPink")
+            changeRocketImg.setImage(image, for: .normal)
+        }
         
         // Setup Labels
         labelFixScore.text = Text.currentScore.localized()
         labelFixBestScore.text = Text.bestScore.localized()
         
-        labelScore.text = String(dataSource?.currentScore() ?? 0)
-        labelBestScore.text = "123123"
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showMenu") {
-            if let nextViewController = segue.destination as? MenuViewController {
-                nextViewController.modalPresentationStyle = .overCurrentContext
-            }
-        }
+        labelScore.text = dataSource?.currentScore()
+        labelBestScore.text = dataSource?.bestScore()
     }
     
     @IBAction func changeRocket(_ sender: UIButton) {

@@ -759,7 +759,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
 
 extension GameViewController: MenuViewControllerDelegate {
     func updateRocketMode(mode: String) {
-        
+        gameMode = mode
     }
     
     func returnTapped() {
@@ -769,14 +769,14 @@ extension GameViewController: MenuViewControllerDelegate {
 
 extension GameViewController: MenuViewControllerDataSource {
     func currentRocketMode() -> String {
-        return "White"
+        return gameMode
     }
     
-    func currentScore() -> Int {
-        return points
+    func currentScore() -> String {
+        return String(points)
     }
     
-    func bestScore() -> Int {
-        return 10
+    func bestScore() -> String {
+        return UserDefaults.standard.string(forKey: "BS") ?? "0"
     }
 }
