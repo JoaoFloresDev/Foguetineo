@@ -61,14 +61,10 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var score = 0
     
     // IMPORTANT: replace the red string below with your own Leaderboard ID (the one you've set in iTunes Connect)
-    var LEADERBOARD_ID = "com.joaoFlores.Foguetinho.Ranking"//"com.score.foguetinho"
+    var LEADERBOARD_ID = "com.joaoFlores.Foguetinho.Ranking"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Setup Labels
-        labelFixScore.text = Text.currentScore.localized()
-        labelFixBestScore.text = Text.bestScore.localized()
         
         // Tint Color
         gestureRotateImg.tintColor = .lightGray
@@ -88,17 +84,11 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         // Call the GC authentication controller
         authenticateLocalPlayer()
         
-        labelBestScore.text = UserDefaults.standard.string(forKey: "BS") ?? "0"
-        labelScore.text = String(self.points)
-        
         rocket = RocketClass(rocketImg: self.rocketImg, backGroundImg: self.backGroundImg)
         box = BoxClass(boxImg: self.boxImg, labelBox: self.labelBox, backGroundImg: self.backGroundImg)
         
-        // voltar depois
-//        setupSounds()
-        soundActive = false
+        setupSounds()
         
-        showMenu(visible: 0)
         initTutorial()
         
         backGroundImg.layer.zPosition = -11
@@ -147,43 +137,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     @IBOutlet weak var rocketImg: UIImageView!
     @IBOutlet weak var boxImg: UIImageView!
     @IBOutlet weak var backGroundImg: UIImageView!
+    
     @IBOutlet weak var labelBox: UILabel!
-    @IBOutlet weak var menu: UIImageView!
     @IBOutlet weak var pauseImg: UIButton!
-    @IBOutlet weak var replay: UIButton!
-    @IBOutlet weak var sound: UIButton!
-    @IBOutlet weak var labelFixScore: UILabel!
-    @IBOutlet weak var labelFixBestScore: UILabel!
-    @IBOutlet weak var labelScore: UILabel!
-    @IBOutlet weak var labelBestScore: UILabel!
-    @IBOutlet weak var information: UIButton!
-    @IBOutlet weak var changeRocketImg: UIButton!
-    @IBOutlet var changeRocketNext: [UIButton]!
-    
-    @IBAction func testButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showMenu", sender: nil)
-    }
-    
-    @IBAction func changeRocket(_ sender: UIButton) {
-        if(changeRocketNext[0].alpha == 1) {
-            rocket.stopAnimation()
-            
-            if(gameMode == "White") {
-                rocketImg.image = (UIImage(named: "rocketPink1")!)
-                
-                let image = UIImage(named: "ChangeRocketPink")
-                changeRocketImg.setImage(image, for: .normal)
-                
-                gameMode = "Pink"
-            } else {
-                rocketImg.image = (UIImage(named: "rocketWhite1")!)
-
-                let image = UIImage(named: "ChangeRocketWhite")
-                changeRocketImg.setImage(image, for: .normal)
-                gameMode = "White"
-            }
-        }
-    }
     
     @IBAction func playPause(_ sender: Any) {
         if(!pause && inGame) {
@@ -249,8 +205,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             }
             
             self.rocket.atualizeDirection()
-            // descomentar depois!!!
-//            if(soundActive && inGame){ audioRocket.play() }
+            if(soundActive && inGame){ audioRocket.play() }
         }
     }
     
@@ -330,9 +285,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         // foguete pegou alvo
         if (((rocketMinX >= boxMinX && rocketMinX <= boxMaxX) || (rocketMaxX >= boxMinX && rocketMaxX <= boxMaxX))
             && ((rocketMinY >= boxMinY && rocketMinY <= boxMaxY) || (rocketMaxY >= boxMinY && rocketMaxY <= boxMaxY))) {
-  
-            // descomentar depoisi!!!
-//            if(soundActive){ audioBox.play() }
+
+            if(soundActive){ audioBox.play() }
             points += 1
             
             addScoreAndSubmitToGC()
@@ -362,11 +316,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     //  estados de jogo
     func returnToGame() {
-        
         rocket.initAnimation(mode: gameMode)
-        
-//        self.timerAlphaMenu.invalidate()
-//        showMenu(visible: 0)
         pause = false
         
         let image = UIImage(named: "pause-button")
@@ -386,40 +336,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         pauseImg.setImage(image, for: .normal)
         
         pause = true
-        
-        labelScore.text = String(points)
-//        menuEffectShow()
         self.performSegue(withIdentifier: "showMenu", sender: nil)
-    }
-    
-//    @objc func dismisMenuEffect() {
-//        self.showMenu(visible: CGFloat(self.alfa))
-//        self.alfa += 0.1
-//
-//        if(alfa >= 1) {
-//            self.timerAlphaMenu.invalidate()
-//        }
-//    }
-    
-//    func menuEffectShow(){
-//        self.alfa = 0.1
-//
-//        self.timerAlphaMenu = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.dismisMenuEffect), userInfo: nil, repeats: true)
-//    }
-    
-    func showMenu(visible: CGFloat) {
-        
-        changeRocketImg.alpha = visible
-        changeRocketNext[0].alpha = visible
-        changeRocketNext[1].alpha = visible
-        menu.alpha = visible
-        sound.alpha = visible
-        replay.alpha = visible
-        labelFixBestScore.alpha = visible
-        labelFixScore.alpha = visible
-        labelScore.alpha = visible
-        labelBestScore.alpha = visible
-        information.alpha = visible
     }
     
     func finishGame() {
@@ -435,7 +352,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         duration = 0.5
         self.rocket.flyInitPosition(duration: TimeInterval(duration))
         
-        labelScore.text = String(self.points)
         self.atualizeBestScore()
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -445,7 +361,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             self.labelBox.font = UIFont(name:"Futura", size: 30)
             self.box.atualizeLabelBox(points: self.points)
             
-//            self.menuEffectShow()
             self.performSegue(withIdentifier: "showMenu", sender: nil)
         }
         
@@ -465,15 +380,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         UIView.animate(withDuration: 1, delay: 0, options: UIView.AnimationOptions.curveLinear, animations: {
             
             if(self.distAnimateArrow == 0) {
-                
-                self.changeRocketNext[1].center.x -= 10
-                self.changeRocketNext[0].center.x += 10
-                
                 self.distAnimateArrow = 1
             } else {
-                self.changeRocketNext[0].center.x -= 10
-                self.changeRocketNext[1].center.x += 10
-                
                 self.distAnimateArrow = 0
             }
             
@@ -494,8 +402,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             UserDefaults.standard.set (points, forKey: "BS")
         }
         
-        labelBestScore.text = UserDefaults.standard.string(forKey: "BS") ?? "0"
-        
         points = 0
         self.box.resetParameters()
         labelBox.text = String(Int(points))
@@ -503,15 +409,11 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     //    Funções do som
     func desativeSound() {
-        let image = UIImage(named: "mute")
-        sound.setImage(image, for: .normal)
         soundActive = false
         audioPlayerActual.volume = 0
     }
     
     func activeSound() {
-        let image = UIImage(named: "sound")
-        sound.setImage(image, for: .normal)
         soundActive = true
         audioPlayerActual.volume = 0.8
     }

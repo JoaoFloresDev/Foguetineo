@@ -6,8 +6,6 @@
 //  Copyright © 2022 Joao Flores. All rights reserved.
 //
 
-//precisa do points para o GC no datasource
-
 import UIKit
 import GameKit
 import AVFoundation
@@ -25,7 +23,7 @@ protocol MenuViewControllerDelegate {
     func updateRocketMode(mode: String)
 }
 
-class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
+class MenuViewController: UIViewController {
     
     // MARK: IBOutlets
     @IBOutlet weak var labelFixScore: UILabel!
@@ -35,38 +33,7 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     @IBOutlet weak var changeRocketImg: UIButton!
     @IBOutlet var changeRocketNext: [UIButton]!
     
-    // MARK: Variables
-    var gcEnabled = Bool()
-    var gcDefaultLeaderBoard = String()
-    var score = 0
-    var LEADERBOARD_ID = "com.joaoFlores.Foguetinho.Ranking"
-    
-    var dataSource: MenuViewControllerDataSource?
-    var delegate: MenuViewControllerDelegate?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.clear
-        view.isOpaque = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if(dataSource?.currentRocketMode() == "White") {
-            let image = UIImage(named: "ChangeRocketWhite")
-            changeRocketImg.setImage(image, for: .normal)
-        } else {
-            let image = UIImage(named: "ChangeRocketPink")
-            changeRocketImg.setImage(image, for: .normal)
-        }
-        
-        // Setup Labels
-        labelFixScore.text = Text.currentScore.localized()
-        labelFixBestScore.text = Text.bestScore.localized()
-        
-        labelScore.text = dataSource?.currentScore()
-        labelBestScore.text = dataSource?.bestScore()
-    }
-    
+    // MARK: Actions
     @IBAction func changeRocket(_ sender: UIButton) {
         if(changeRocketNext[0].alpha == 1) {
             if(dataSource?.currentRocketMode() == "White") {
@@ -105,12 +72,47 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         present(gcVC, animated: true, completion: nil)
     }
     
+    // MARK: Variables
+    var gcEnabled = Bool()
+    var gcDefaultLeaderBoard = String()
+    var score = 0
+    var LEADERBOARD_ID = "com.joaoFlores.Foguetinho.Ranking"
+    
+    var dataSource: MenuViewControllerDataSource?
+    var delegate: MenuViewControllerDelegate?
+    
+    // MARK: Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.clear
+        view.isOpaque = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(dataSource?.currentRocketMode() == "White") {
+            let image = UIImage(named: "ChangeRocketWhite")
+            changeRocketImg.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "ChangeRocketPink")
+            changeRocketImg.setImage(image, for: .normal)
+        }
+        
+        // Setup Labels
+        labelFixScore.text = Text.currentScore.localized()
+        labelFixBestScore.text = Text.bestScore.localized()
+        
+        labelScore.text = dataSource?.currentScore()
+        labelBestScore.text = dataSource?.bestScore()
+    }
+    
     func rateApp() {
         if #available(iOS 10.3, *) {
             SKStoreReviewController.requestReview()
         }
     }
-    
+}
+
+extension MenuViewController: GKGameCenterControllerDelegate, GADInterstitialDelegate {
     // MARK: - AUTHENTICATE LOCAL PLAYER
     func authenticateLocalPlayer() {
         let localPlayer: GKLocalPlayer = GKLocalPlayer.local
@@ -139,10 +141,14 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     // MARK: - ADD 10 POINTS TO THE SCORE AND SUBMIT THE UPDATED SCORE TO GAME CENTER
     func addScoreAndSubmitToGC() {
         // Add 10 points to current score
+        guard let currentScore = dataSource?.currentScore(),
+              let currentScoreInt64 = Int64(currentScore) else {
+                  return
+              }
         
         // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
-        bestScoreInt.value = Int64(600)
+        bestScoreInt.value = currentScoreInt64
         GKScore.report([bestScoreInt]) { (error) in
             if error != nil {
                 print(error!.localizedDescription)
@@ -152,7 +158,6 @@ class MenuViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         }
     }
     
-    // Delegate to dismiss the GC controller
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
