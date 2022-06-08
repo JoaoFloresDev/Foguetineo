@@ -16,7 +16,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var interstitial: GADInterstitial!
     
     func createAndLoadInterstitial() -> GADInterstitial {
-        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
@@ -123,7 +123,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showMenu") {
+        if (segue.identifier == SegueIdentifier.showMenu.rawValue) {
             if let nextViewController = segue.destination as? MenuViewController {
                 nextViewController.dataSource = self
                 nextViewController.delegate = self
@@ -317,7 +317,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         rocket.initAnimation(mode: rocketMode)
         pause = false
         
-        let image = UIImage(named: "pause-button")
+        let image = UIImage(named: ImageName.pauseButton.rawValue)
         pauseImg.setImage(image, for: .normal)
         
         if(rocket.moving) {
@@ -330,11 +330,11 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             timerRocketRun.invalidate()
         }
         
-        let image = UIImage(named: "play-button")
+        let image = UIImage(named: ImageName.playButton.rawValue)
         pauseImg.setImage(image, for: .normal)
         
         pause = true
-        self.performSegue(withIdentifier: "showMenu", sender: nil)
+        self.performSegue(withIdentifier: SegueIdentifier.showMenu.rawValue, sender: nil)
     }
     
     func finishGame() {
@@ -355,11 +355,11 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         
         delayWithSeconds(TimeInterval(duration + 0.5)) {
-            self.boxImg.image = (UIImage(named: "disc1")!)
+            self.boxImg.image = (UIImage(named: ImageName.disc1.rawValue)!)
             self.labelBox.font = UIFont(name:"Futura", size: 30)
             self.box.atualizeLabelBox(points: self.points)
             
-            self.performSegue(withIdentifier: "showMenu", sender: nil)
+            self.performSegue(withIdentifier: SegueIdentifier.showMenu.rawValue, sender: nil)
         }
         
         if(showAdsIn3games >= 3) {
@@ -564,9 +564,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     @objc func animateGestureTap() {
-        if(gestureTapImg.image == (UIImage(named: "twoTapImg1"))) { gestureTapImg.image = (UIImage(named: "twoTapImg2")) }
-        else if (gestureTapImg.image == (UIImage(named: "twoTapImg2"))) { gestureTapImg.image = (UIImage(named: "twoTapImg3")) }
-        else { gestureTapImg.image = (UIImage(named: "twoTapImg1")) }
+        if(gestureTapImg.image == (UIImage(named: ImageName.twoTapImg1.rawValue))) { gestureTapImg.image = (UIImage(named: ImageName.twoTapImg2.rawValue)) }
+        else if (gestureTapImg.image == (UIImage(named: ImageName.twoTapImg2.rawValue))) { gestureTapImg.image = (UIImage(named: ImageName.twoTapImg3.rawValue)) }
+        else { gestureTapImg.image = (UIImage(named: ImageName.twoTapImg1.rawValue)) }
     }
     
     func TutorialTapInit() {

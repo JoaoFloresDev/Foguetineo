@@ -11,6 +11,7 @@
 		7311767428500A03004E1EF5 /* Credits.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7311767328500A03004E1EF5 /* Credits.storyboard */; };
 		7311767628501EAE004E1EF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311767528501EAE004E1EF5 /* MenuViewController.swift */; };
 		731176792850899B004E1EF5 /* Utils+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731176782850899B004E1EF5 /* Utils+Enum.swift */; };
+		7311767B28509005004E1EF5 /* Utils+UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7311767A28509005004E1EF5 /* Utils+UserDefault.swift */; };
 		7367A0DE281F15A200300DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7367A0E0281F15A200300DE7 /* Localizable.strings */; };
 		7367A0E4281F161E00300DE7 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367A0E3281F161E00300DE7 /* String+extension.swift */; };
 		7367A0E6281F17A600300DE7 /* localizableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367A0E5281F17A600300DE7 /* localizableEnum.swift */; };
@@ -62,6 +63,7 @@
 		7311767328500A03004E1EF5 /* Credits.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Credits.storyboard; sourceTree = "<group>"; };
 		7311767528501EAE004E1EF5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		731176782850899B004E1EF5 /* Utils+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+Enum.swift"; sourceTree = "<group>"; };
+		7311767A28509005004E1EF5 /* Utils+UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+UserDefault.swift"; sourceTree = "<group>"; };
 		7367A0DF281F15A200300DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7367A0E1281F15A600300DE7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7367A0E3281F161E00300DE7 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				731176782850899B004E1EF5 /* Utils+Enum.swift */,
+				7311767A28509005004E1EF5 /* Utils+UserDefault.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				C4572B4622E6693500E3E123 /* BoxClass.swift in Sources */,
 				7367A0E4281F161E00300DE7 /* String+extension.swift in Sources */,
 				C48892C722A5849A007FB2E6 /* CreditsViewController.swift in Sources */,
+				7311767B28509005004E1EF5 /* Utils+UserDefault.swift in Sources */,
 				7367A0E6281F17A600300DE7 /* localizableEnum.swift in Sources */,
 				C457755922A17DF8002F9C7C /* AppDelegate.swift in Sources */,
 				731176792850899B004E1EF5 /* Utils+Enum.swift in Sources */,
