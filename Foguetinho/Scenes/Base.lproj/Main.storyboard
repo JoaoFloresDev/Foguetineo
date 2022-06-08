@@ -297,11 +297,13 @@
                 <viewControllerPlaceholder storyboardName="Credits" id="qa2-d6-Msu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LW4-Q5-D2O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="206"/>
+            <point key="canvasLocation" x="1246" y="206"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="wvd-5s-I6V">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbX-XE-6dQ" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="us0-tk-7aE"/>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="0HL-Vs-JV0" customClass="MenuViewController" customModule="Foguetinho" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UXK-Ws-IHh"/>
@@ -353,6 +355,9 @@
                                             <constraint firstAttribute="width" secondItem="Lhg-HW-i2a" secondAttribute="height" multiplier="1:1" id="8LD-yW-5Z2"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="information"/>
+                                        <connections>
+                                            <action selector="information:" destination="0HL-Vs-JV0" eventType="touchUpInside" id="Ih8-JD-Qzd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-kZ-ibI">
                                         <rect key="frame" x="115.5" y="230" width="142" height="142"/>
@@ -367,6 +372,9 @@
                                             <constraint firstAttribute="width" secondItem="Une-kJ-skx" secondAttribute="height" multiplier="1:1" id="wsv-lT-KnY"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="ranking"/>
+                                        <connections>
+                                            <action selector="checkGCLeaderboard:" destination="0HL-Vs-JV0" eventType="touchUpInside" id="x9L-fa-vfT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-vk-7FA">
                                         <rect key="frame" x="151" y="402" width="71" height="71"/>
@@ -400,9 +408,15 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWz-KL-yYs">
                                         <rect key="frame" x="67" y="412.5" width="99.5" height="50"/>
+                                        <connections>
+                                            <action selector="changeRocket:" destination="0HL-Vs-JV0" eventType="touchUpInside" id="fSg-ud-pCz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyW-mn-j5p">
                                         <rect key="frame" x="173.5" y="412.5" width="124.5" height="50"/>
+                                        <connections>
+                                            <action selector="changeRocket:" destination="0HL-Vs-JV0" eventType="touchUpInside" id="tCD-WP-V9m"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -470,11 +484,29 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="bgj-zd-zNV"/>
+                    <connections>
+                        <outlet property="changeRocketImg" destination="gPg-vk-7FA" id="Aru-mA-rSM"/>
+                        <outlet property="labelBestScore" destination="mkW-GB-640" id="f2h-ab-3Y0"/>
+                        <outlet property="labelFixBestScore" destination="0P9-L9-bez" id="k7U-wn-vIw"/>
+                        <outlet property="labelFixScore" destination="Mo6-tt-gJP" id="7yi-nl-1g6"/>
+                        <outlet property="labelScore" destination="qgI-W6-Dg4" id="iKO-0l-PNW"/>
+                        <outletCollection property="changeRocketNext" destination="hyW-mn-j5p" collectionClass="NSMutableArray" id="bbc-Pz-CD3"/>
+                        <outletCollection property="changeRocketNext" destination="fWz-KL-yYs" collectionClass="NSMutableArray" id="VeM-fY-2YN"/>
+                        <segue destination="6Pd-bR-jvq" kind="show" identifier="goInformations" id="Jru-2L-VcD"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wbX-XE-6dQ" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="us0-tk-7aE"/>
             </objects>
             <point key="canvasLocation" x="1752" y="58"/>
+        </scene>
+        <!--Credits-->
+        <scene sceneID="CcF-Am-1kk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Credits" id="6Pd-bR-jvq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="q3z-Us-R1Z"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="czF-th-GlH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2307" y="58"/>
         </scene>
     </scenes>
     <resources>
