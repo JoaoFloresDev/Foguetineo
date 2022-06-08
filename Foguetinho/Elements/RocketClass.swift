@@ -38,10 +38,10 @@ class RocketClass {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initAnimation(mode: String) {
+    func initAnimation(mode: RocketMode) {
         
         var images: [UIImage] = []
-        if(mode == "Pink") {
+        if(mode == .pink) {
             for i in 1...2 {
                 images.append(UIImage(named: "rocketPink\(i)")!)
             }

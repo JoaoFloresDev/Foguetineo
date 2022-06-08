@@ -50,10 +50,11 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var rocket:RocketClass!
     var box:BoxClass!
     var alfa: Double = 0
-    var gameMode: String = "White"
+    var rocketMode: RocketMode = .white
     
     var velAnimateArrow = 0
     var distAnimateArrow = 0
+    
     // game center
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
@@ -153,17 +154,16 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     @IBAction func information(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "goInformations", sender: nil)
+        self.performSegue(withIdentifier: SegueIdentifier.goInformations.rawValue,
+                          sender: nil)
     }
     
     private func replayUpdateState() {
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
-//            self.timerAlphaMenu.invalidate()
             TutorialRotate = true
             TutorialTap = true
             inGame = true
             initTutorial()
-//            showMenu(visible: 0)
         } else if(pause) {
             returnToGame()
         }
@@ -191,16 +191,14 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             
             if(rocket.moving) {
                 self.rocket.stopAnimation()
-                if(gameMode == "White") {
-                    rocketImg.image = (UIImage(named: "rocketWhiteTap")!)
-                }
-                
-                else {
-                    rocketImg.image = (UIImage(named: "rocketPinkTap")!)
+                if(rocketMode == .white) {
+                    rocketImg.image = (UIImage(named: ImageName.rocketWhiteTap.rawValue)!)
+                } else {
+                    rocketImg.image = (UIImage(named: ImageName.rocketPinkTap.rawValue)!)
                 }
                 
                 delayWithSeconds(0.3) {
-                    self.rocket.initAnimation(mode: self.gameMode)
+                    self.rocket.initAnimation(mode: self.rocketMode)
                 }
             }
             
@@ -210,7 +208,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     @objc func tap (_ gesture:UITapGestureRecognizer) {
-        if(!TutorialRotate && !TutorialTap && !rocket.moving && inGame && !pause && gameMode == "White" ) || (gameMode == "Pink" && !pause && !TutorialRotate) {
+        if(!TutorialRotate && !TutorialTap && !rocket.moving && inGame && !pause && rocketMode == .white) || (rocketMode == .pink && !pause && !TutorialRotate) {
             if(TutorialTap) {
                 TutorialEnding()
             }
@@ -229,7 +227,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             if TutorialRotate {
                 TutorialTapInit()
             }
-            if((gameMode == "White" && !pause)) {
+            if((rocketMode == .white && !pause)) {
                 if #available(iOS 11.0, *) {
                     gestureRotateImg.tintColor = UIColor(named: "lightGreen")
                 } else {
@@ -252,7 +250,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     func runRocket() {
         rocket.moving = true
-        rocket.initAnimation(mode: gameMode)
+        rocket.initAnimation(mode: rocketMode)
         
         self.timerRocketRun = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(self.checkRocket), userInfo: nil, repeats: true)
         
@@ -316,7 +314,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     //  estados de jogo
     func returnToGame() {
-        rocket.initAnimation(mode: gameMode)
+        rocket.initAnimation(mode: rocketMode)
         pause = false
         
         let image = UIImage(named: "pause-button")
@@ -539,7 +537,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
         atualRotationGesture += CGFloat(Double.pi/20)
         
-        if(gameMode == "White") {
+        if(rocketMode == .white) {
             labelTutorial.text = Text.rotateTutorialWhiteMode.localized()
         } else {
             labelTutorial.text = Text.rotateTutorialPinkMode.localized()
@@ -581,7 +579,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         TutorialRotate = false
         labelTutorial.text = Text.tapTutorialPinkMode.localized()
         
-        if(gameMode == "White") {
+        if(rocketMode == .white) {
             TutorialEnding()
         }
     }
@@ -660,8 +658,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
 }
 
 extension GameViewController: MenuViewControllerDelegate {
-    func updateRocketMode(mode: String) {
-        gameMode = mode
+    func updateRocketMode(mode: RocketMode) {
+        rocketMode = mode
     }
     
     func returnTapped() {
@@ -670,8 +668,8 @@ extension GameViewController: MenuViewControllerDelegate {
 }
 
 extension GameViewController: MenuViewControllerDataSource {
-    func currentRocketMode() -> String {
-        return gameMode
+    func currentRocketMode() -> RocketMode {
+        return rocketMode
     }
     
     func currentScore() -> String {

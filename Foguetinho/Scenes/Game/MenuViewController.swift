@@ -15,12 +15,12 @@ import GoogleMobileAds
 protocol MenuViewControllerDataSource {
     func currentScore() -> String
     func bestScore() -> String
-    func currentRocketMode() -> String
+    func currentRocketMode() -> RocketMode
 }
 
 protocol MenuViewControllerDelegate {
     func returnTapped()
-    func updateRocketMode(mode: String)
+    func updateRocketMode(mode: RocketMode)
 }
 
 class MenuViewController: UIViewController {
@@ -36,16 +36,14 @@ class MenuViewController: UIViewController {
     // MARK: Actions
     @IBAction func changeRocket(_ sender: UIButton) {
         if(changeRocketNext[0].alpha == 1) {
-            if(dataSource?.currentRocketMode() == "White") {
-                
+            if(dataSource?.currentRocketMode() == .white) {
                 let image = UIImage(named: "ChangeRocketPink")
                 changeRocketImg.setImage(image, for: .normal)
-                
-                delegate?.updateRocketMode(mode: "Pink")
+                delegate?.updateRocketMode(mode: .pink)
             } else {
                 let image = UIImage(named: "ChangeRocketWhite")
                 changeRocketImg.setImage(image, for: .normal)
-                delegate?.updateRocketMode(mode: "White")
+                delegate?.updateRocketMode(mode: .white)
             }
         }
     }
@@ -89,7 +87,7 @@ class MenuViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if(dataSource?.currentRocketMode() == "White") {
+        if(dataSource?.currentRocketMode() == .white) {
             let image = UIImage(named: "ChangeRocketWhite")
             changeRocketImg.setImage(image, for: .normal)
         } else {

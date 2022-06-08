@@ -6,7 +6,17 @@
 //  Copyright © 2022 Joao Flores. All rights reserved.
 //
 
-enum rocketMode {
+enum RocketMode {
     case white
     case pink
+}
+
+enum SegueIdentifier: String {
+    case goInformations
+    case showMenu
+}
+
+enum ImageName: String {
+    case rocketWhiteTap
+    case rocketPinkTap
 }
