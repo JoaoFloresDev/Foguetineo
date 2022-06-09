@@ -61,7 +61,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AOX-sb-msE" secondAttribute="height" multiplier="1:1" id="QrY-jS-jz7"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="pause-button"/>
+                                <state key="normal" title="Button" image="pauseButton"/>
                                 <connections>
                                     <action selector="playPause:" destination="17v-cX-zIn" eventType="touchUpInside" id="Hsq-e3-hh7"/>
                                 </connections>
@@ -113,8 +113,6 @@
         <!--Menu View Controller-->
         <scene sceneID="wvd-5s-I6V">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wbX-XE-6dQ" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="us0-tk-7aE"/>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="0HL-Vs-JV0" customClass="MenuViewController" customModule="Foguetinho" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UXK-Ws-IHh"/>
@@ -309,6 +307,8 @@
                         <segue destination="6Pd-bR-jvq" kind="show" identifier="goInformations" id="Jru-2L-VcD"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbX-XE-6dQ" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="us0-tk-7aE"/>
             </objects>
             <point key="canvasLocation" x="1222" y="58"/>
         </scene>
@@ -331,7 +331,7 @@
         <image name="menu" width="425" height="567"/>
         <image name="next" width="512" height="512"/>
         <image name="next2" width="512" height="512"/>
-        <image name="pause-button" width="512" height="512"/>
+        <image name="pauseButton" width="512" height="512"/>
         <image name="ranking" width="512" height="512"/>
         <image name="replay" width="512" height="512"/>
         <image name="rocketWhite1" width="432" height="724"/>
