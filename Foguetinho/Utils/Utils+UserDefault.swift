@@ -8,16 +8,11 @@
 
 import Foundation
 
-enum ProtectionMode: String {
-    case calculator
-    case noProtection
-    case bank
-}
-
-enum Default: String {
+enum IntDefault: String {
     
     case numberOfGames
     case bestScore
+    case BS
     
     func getValue() -> Int {
         return UserDefaults.standard.integer(forKey: self.rawValue)
@@ -28,14 +23,15 @@ enum Default: String {
     }
 }
 
-//struct UserDefaultService {
-//    var userDefaults = UserDefaults.standard
-//
-//    func getNumberOfGames() -> Int {
-//        return userDefaults.integer(forKey: Key.numberOfGames.rawValue)
-//    }
-//
-//    func setNumberOfGames(number: Int) {
-//        UserDefaults.standard.set(number, forKey: Key.numberOfGames.rawValue)
-//    }
-//}
+enum BoolDefault: String {
+    
+    case bestScore
+    
+    func getValue() -> Bool {
+        return UserDefaults.standard.bool(forKey: self.rawValue)
+    }
+    
+    func setValue(value: Bool) {
+        UserDefaults.standard.set(value, forKey: self.rawValue)
+    }
+}

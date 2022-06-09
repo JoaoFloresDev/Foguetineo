@@ -389,20 +389,19 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     //    best score
     func atualizeBestScore() {
-        if !UserDefaults.standard.bool(forKey: "bestScore") {
-            UserDefaults.standard.set(true, forKey: "bestScore")
-            UserDefaults.standard.set (0, forKey: "BS")
+        if !BoolDefault.bestScore.getValue() {
+            BoolDefault.bestScore.setValue(value: true)
+            IntDefault.BS.setValue(value: 0)
         }
         
-        let aux = Int(UserDefaults.standard.string(forKey: "BS") ?? "0")
-        if(points > aux!)
-        {
-            UserDefaults.standard.set (points, forKey: "BS")
+        let aux = IntDefault.BS.getValue()
+        if(points > aux) {
+            IntDefault.BS.setValue(value: points)
         }
         
         points = 0
         self.box.resetParameters()
-        labelBox.text = String(Int(points))
+        labelBox.text = String(points)
     }
     
     //    Funções do som
@@ -677,6 +676,6 @@ extension GameViewController: MenuViewControllerDataSource {
     }
     
     func bestScore() -> String {
-        return UserDefaults.standard.string(forKey: "BS") ?? "0"
+        return String(IntDefault.BS.getValue())
     }
 }
