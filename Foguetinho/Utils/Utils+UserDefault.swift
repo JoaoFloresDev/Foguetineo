@@ -14,19 +14,28 @@ enum ProtectionMode: String {
     case bank
 }
 
-enum Key: String {
-    case numberOfGames
-    case firstUse
-}
-
-struct UserDefaultService {
-    var userDefaults = UserDefaults.standard
+enum Default: String {
     
-    func getNumberOfGames() -> Int {
-        return userDefaults.integer(forKey: Key.numberOfGames.rawValue)
+    case numberOfGames
+    case bestScore
+    
+    func getValue() -> Int {
+        return UserDefaults.standard.integer(forKey: self.rawValue)
     }
-
-    func setNumberOfGames(number: Int) {
-        UserDefaults.standard.set(number, forKey: Key.numberOfGames.rawValue)
+    
+    func setValue(value: Int) {
+        UserDefaults.standard.set(value, forKey: self.rawValue)
     }
 }
+
+//struct UserDefaultService {
+//    var userDefaults = UserDefaults.standard
+//
+//    func getNumberOfGames() -> Int {
+//        return userDefaults.integer(forKey: Key.numberOfGames.rawValue)
+//    }
+//
+//    func setNumberOfGames(number: Int) {
+//        UserDefaults.standard.set(number, forKey: Key.numberOfGames.rawValue)
+//    }
+//}

@@ -18,8 +18,6 @@ class RocketClass {
     var backGroundImg: UIImageView
     var moving = false
     
-    var userDefaultService: UserDefaultService = UserDefaultService()
-    
     init(rocketImg: UIImageView, backGroundImg: UIImageView) {
         self.rocketImg = rocketImg
         self.backGroundImg = backGroundImg
@@ -28,10 +26,10 @@ class RocketClass {
         self.rocketImg.center.y = backGroundImg.center.y*2 - self.rocketImg.frame.height*3
         
         rocketImg.frame.size = CGSize(width: 50, height: 70)
-        let numberOfGames = userDefaultService.getNumberOfGames()
+        let numberOfGames = Default.numberOfGames.getValue()
         if numberOfGames < 3 {
             dist = UIScreen.main.bounds.width/800
-            userDefaultService.setNumberOfGames(number: numberOfGames + 1)
+            Default.numberOfGames.setValue(value: numberOfGames + 1)
         }
     }
     
@@ -111,10 +109,10 @@ class RocketClass {
         self.rocketImg.stopAnimating()
         self.moving = false
         
-        let numberOfGames = userDefaultService.getNumberOfGames()
+        let numberOfGames = Default.numberOfGames.getValue()
         if numberOfGames < 3 {
             dist = UIScreen.main.bounds.width/800
-            userDefaultService.setNumberOfGames(number: numberOfGames + 1)
+            Default.numberOfGames.setValue(value: numberOfGames + 1)
         } else {
             self.dist = UIScreen.main.bounds.width/400
         }
