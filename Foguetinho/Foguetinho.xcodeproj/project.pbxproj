@@ -15,6 +15,7 @@
 		7367A0DE281F15A200300DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7367A0E0281F15A200300DE7 /* Localizable.strings */; };
 		7367A0E4281F161E00300DE7 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367A0E3281F161E00300DE7 /* String+extension.swift */; };
 		7367A0E6281F17A600300DE7 /* localizableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367A0E5281F17A600300DE7 /* localizableEnum.swift */; };
+		73EC37B228519A190019D7D0 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EC37B128519A190019D7D0 /* Menu.storyboard */; };
 		C1B5CCC8D680B2012E1FBB8A /* Pods_Foguetinho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C9CBDBFD1A759E2BEF85E /* Pods_Foguetinho.framework */; };
 		C4572B4622E6693500E3E123 /* BoxClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4572B4522E6693500E3E123 /* BoxClass.swift */; };
 		C4572B5922E6BFAD00E3E123 /* EndSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4572B5622E6BFAD00E3E123 /* EndSound1.mp3 */; };
@@ -68,6 +69,7 @@
 		7367A0E1281F15A600300DE7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7367A0E3281F161E00300DE7 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		7367A0E5281F17A600300DE7 /* localizableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = localizableEnum.swift; sourceTree = "<group>"; };
+		73EC37B128519A190019D7D0 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		96DCADDC00DDF5A5D428F4EF /* Pods_FoguetinhoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoguetinhoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F26A1D3F5CC560E80D901F6 /* Pods-FoguetinhoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoguetinhoTests.debug.xcconfig"; path = "Target Support Files/Pods-FoguetinhoTests/Pods-FoguetinhoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A936B4285F1FF3BA32D4B524 /* Pods-Foguetinho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foguetinho.release.xcconfig"; path = "Target Support Files/Pods-Foguetinho/Pods-Foguetinho.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				C457756122A17DFA002F9C7C /* LaunchScreen.storyboard */,
 				C457755822A17DF8002F9C7C /* AppDelegate.swift */,
 				C457755C22A17DF8002F9C7C /* Main.storyboard */,
+				73EC37B0285199EE0019D7D0 /* Menu */,
 				73117672285009EE004E1EF5 /* Credits */,
 				73117671285009AD004E1EF5 /* Tutorial */,
 				73117670285009A6004E1EF5 /* Game */,
@@ -158,8 +161,8 @@
 		73117670285009A6004E1EF5 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				73EC37B328519AE20019D7D0 /* GestureAnimation */,
 				C457755A22A17DF8002F9C7C /* GameViewController.swift */,
-				7311767528501EAE004E1EF5 /* MenuViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -197,6 +200,22 @@
 				7367A0E5281F17A600300DE7 /* localizableEnum.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		73EC37B0285199EE0019D7D0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				7311767528501EAE004E1EF5 /* MenuViewController.swift */,
+				73EC37B128519A190019D7D0 /* Menu.storyboard */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		73EC37B328519AE20019D7D0 /* GestureAnimation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GestureAnimation;
 			sourceTree = "<group>";
 		};
 		C457754C22A17DF8002F9C7C = {
@@ -400,6 +419,7 @@
 				C457B93722A9A51D00B5D6CD /* Air_Woosh_Underwater.mp3 in Resources */,
 				C457B93322A98F0B00B5D6CD /* A_Fever.mp3 in Resources */,
 				7311767428500A03004E1EF5 /* Credits.storyboard in Resources */,
+				73EC37B228519A190019D7D0 /* Menu.storyboard in Resources */,
 				C46C524922A81A5900DDABF8 /* disparoFoguete.mp3 in Resources */,
 				C46C524722A813C000DDABF8 /* Dark_Tranquility.mp3 in Resources */,
 				C457756322A17DFA002F9C7C /* LaunchScreen.storyboard in Resources */,
