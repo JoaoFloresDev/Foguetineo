@@ -14,20 +14,6 @@ import GoogleMobileAds
 
 class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
     
-    //    ADS
-    var interstitial: GADInterstitial!
-    
-    func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
-        interstitial.delegate = self
-        interstitial.load(GADRequest())
-        return interstitial
-    }
-    
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        interstitial = createAndLoadInterstitial()
-    }
-    
     var tutorialView: GestureAnimationView = {
         let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
         myView.setup()
@@ -81,14 +67,6 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         // Set Background
         let random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
-        
-        // ADS
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/1816921732")
-        let request = GADRequest()
-        interstitial.load(request)
-        interstitial.delegate = self
-        
-        interstitial = createAndLoadInterstitial()
         
         // Call the GC authentication controller
         authenticateLocalPlayer()
@@ -156,6 +134,7 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
     
     @IBOutlet weak var skeepTutorialButton: UIButton!
     @IBAction func skeepTutorial(_ sender: Any) {
+        self.modalPresentationStyle = .overCurrentContext
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -271,7 +250,7 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         
         // foguete na borda da tela
         else if ( rocketMinX <= bgMinX || rocketMaxX >= bgMaxX || rocketMinY <= bgMinY || rocketMaxY >= bgMaxY ) {
-            self.rocket.rotate(rotation: 90)
+            self.rocket.rotate(rotation: 80)
             self.tap()
         }
     }

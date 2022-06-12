@@ -13,6 +13,7 @@ enum IntDefault: String {
     case numberOfGames
     case bestScore
     case BS
+    case olderUser
     
     func getValue() -> Int {
         return UserDefaults.standard.integer(forKey: self.rawValue)

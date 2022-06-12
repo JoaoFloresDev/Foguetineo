@@ -48,18 +48,26 @@
                                     <action selector="playPause:" destination="17v-cX-zIn" eventType="touchUpInside" id="Hsq-e3-hh7"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-2u-dm8">
+                                <rect key="frame" x="-207" y="-443" width="828" height="1792"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eH0-lk-AuD"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="M2t-2u-dm8" firstAttribute="centerX" secondItem="eH0-lk-AuD" secondAttribute="centerX" id="2Fv-SC-yt8"/>
+                            <constraint firstItem="M2t-2u-dm8" firstAttribute="centerY" secondItem="eH0-lk-AuD" secondAttribute="centerY" id="8s0-Y9-XAC"/>
                             <constraint firstItem="qTe-el-mFu" firstAttribute="height" secondItem="ZV1-FS-n3c" secondAttribute="height" multiplier="1.1" id="AGu-ok-v3n"/>
                             <constraint firstItem="qTe-el-mFu" firstAttribute="centerX" secondItem="ZV1-FS-n3c" secondAttribute="centerX" id="ESR-xf-gnK"/>
                             <constraint firstItem="qTe-el-mFu" firstAttribute="centerY" secondItem="ZV1-FS-n3c" secondAttribute="centerY" id="XWO-QY-RXy"/>
                             <constraint firstItem="eH0-lk-AuD" firstAttribute="trailing" secondItem="AOX-sb-msE" secondAttribute="trailing" constant="15" id="Xjm-0x-M9z"/>
                             <constraint firstItem="AOX-sb-msE" firstAttribute="top" secondItem="zGV-rS-dC3" secondAttribute="bottom" constant="15" id="e5f-9P-SJl"/>
+                            <constraint firstItem="M2t-2u-dm8" firstAttribute="width" secondItem="ZV1-FS-n3c" secondAttribute="width" multiplier="2" id="gQw-ay-ggv"/>
                             <constraint firstItem="AOX-sb-msE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eH0-lk-AuD" secondAttribute="leading" symbolic="YES" id="o10-bR-DeZ"/>
                             <constraint firstItem="AOX-sb-msE" firstAttribute="width" secondItem="qTe-el-mFu" secondAttribute="width" multiplier="0.1" id="tbc-d0-hUN"/>
+                            <constraint firstItem="M2t-2u-dm8" firstAttribute="height" secondItem="ZV1-FS-n3c" secondAttribute="height" multiplier="2" id="uHp-tJ-5jR"/>
                             <constraint firstItem="qTe-el-mFu" firstAttribute="width" secondItem="ZV1-FS-n3c" secondAttribute="width" id="wOQ-b1-8u4"/>
                         </constraints>
                         <connections>
@@ -70,16 +78,28 @@
                     <connections>
                         <outlet property="backGroundImg" destination="qTe-el-mFu" id="Eyp-Nt-iox"/>
                         <outlet property="boxImg" destination="XwQ-s8-d6b" id="7hC-61-6F3"/>
+                        <outlet property="hideGameView" destination="M2t-2u-dm8" id="sGS-1R-Rxe"/>
                         <outlet property="labelBox" destination="mqI-sv-F2F" id="uWV-2w-3aH"/>
                         <outlet property="pauseImg" destination="AOX-sb-msE" id="YGL-h6-89G"/>
                         <outlet property="rocketImg" destination="60x-cq-umf" id="iMR-qV-Whg"/>
                         <segue destination="Av2-hc-7KT" kind="show" identifier="showMenu" id="VvI-JC-pFp"/>
+                        <segue destination="bgI-id-Kzn" kind="presentation" identifier="goToTutorial" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="59u-I6-to4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yD-LX-Iq2" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer numberOfTapsRequired="2" id="tUc-U4-nkb"/>
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="57.589285714285708"/>
+        </scene>
+        <!--Tutorial-->
+        <scene sceneID="rXc-Bn-8Zi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tutorial" id="bgI-id-Kzn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wMY-Pu-LQT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqA-iC-skD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="-21"/>
         </scene>
         <!--Menu-->
         <scene sceneID="4By-Bk-50M">

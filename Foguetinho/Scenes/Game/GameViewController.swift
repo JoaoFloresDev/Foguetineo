@@ -73,8 +73,20 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     // IMPORTANT: replace the red string below with your own Leaderboard ID (the one you've set in iTunes Connect)
     var LEADERBOARD_ID = "com.joaoFlores.Foguetinho.Ranking"
     
+    @IBOutlet weak var hideGameView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            if IntDefault.olderUser.getValue() < 3 {
+                self.performSegue(withIdentifier: "goToTutorial", sender: nil)
+                self.delayWithSeconds(0.5) {
+                    self.hideGameView.isHidden = true
+                }
+            } else {
+                self.hideGameView.isHidden = true
+            }
+        }
         
         // Set Background
         let random = Int.random(in: 0 ..< 2)
@@ -112,6 +124,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         
         self.rocket.flyInitPosition(duration: TimeInterval(0.5))
         
+        hideGameView.layer.zPosition = 10
+        tutorialView.layer.zPosition = 9
         view.addSubview(tutorialView)
         tutorialView.translatesAutoresizingMaskIntoConstraints = false
         let horizontalConstraint = tutorialView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
