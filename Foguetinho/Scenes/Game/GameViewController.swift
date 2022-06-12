@@ -26,8 +26,13 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         interstitial = createAndLoadInterstitial()
     }
     
+    var tutorialView: GestureAnimationView = {
+        let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
+        myView.startTutorial()
+        return myView
+    }()
+    
     var showAdsIn3games = 0
-    var tutorialShowTimes = 0
     var audioEnd1:    AVAudioPlayer!
     var audioEnd2:  AVAudioPlayer!
     var audioPlayer1: AVAudioPlayer!
@@ -36,7 +41,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var audioPlayerActual: AVAudioPlayer!
     var audioRocket: AVAudioPlayer!
     var audioBox:    AVAudioPlayer!
-    var atualRotationGesture: CGFloat = CGFloat(0)
     var points: Int = 0
     var timerRocketRun: Timer!
     var timerSoundBackground: Timer!
@@ -45,9 +49,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var pause = false
     var rocket:RocketClass!
     var box:BoxClass!
-    var alfa: Double = 0
     var rocketMode: RocketMode = .white
-    
     var velAnimateArrow = 0
     var distAnimateArrow = 0
     
@@ -99,27 +101,17 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         
         self.rocket.flyInitPosition(duration: TimeInterval(0.5))
         
-        let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
-        
-        view.addSubview(myView)
-        
-        myView.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = myView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        let verticalConstraint = myView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        let leftConstraint = myView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-        let rightConstraint = myView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        let heightConstraint = myView.heightAnchor.constraint(equalTo: myView.widthAnchor)
+        view.addSubview(tutorialView)
+        tutorialView.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = tutorialView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let verticalConstraint = tutorialView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        let leftConstraint = tutorialView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        let rightConstraint = tutorialView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        let heightConstraint = tutorialView.heightAnchor.constraint(equalTo: tutorialView.widthAnchor)
         view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint,heightConstraint])
-        myView.setup()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
     }
     
@@ -145,21 +137,16 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             pauseGame()
             rocket.stopAnimation()
             rateApp()
-        } else if(pause) {
-            returnToGame()
         }
     }
     
     private func replayUpdateState() {
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
             inGame = true
+            tutorialView.startTutorial()
         } else if(pause) {
             returnToGame()
         }
-    }
-    
-    @IBAction func replay(_ sender: Any) {
-        replayUpdateState()
     }
     
     func rateApp() {
@@ -206,9 +193,17 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         }
         
         if gesture.state == .ended {
-            if((rocketMode == .white && !pause)) {
+            if rocketMode == .white {
+                tutorialView.endTutorial()
                 self.tap()
+            } else {
+                tutorialView.endTutorial()
             }
+//            if((rocketMode == .white && !pause)) {
+//                self.tap()
+//            } else {
+//
+//            }
         }
     }
     
@@ -221,13 +216,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     func runRocket() {
         rocket.moving = true
         rocket.initAnimation(mode: rocketMode)
-        
         self.timerRocketRun = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(self.checkRocket), userInfo: nil, repeats: true)
-        
-        if(tutorialShowTimes < 2) {
-            inGame = true
-            tutorialShowTimes += 1
-        }
+        inGame = true
     }
     
     func colisionCheck() {
@@ -287,25 +277,23 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         let image = UIImage(named: ImageName.pauseButton.rawValue)
         pauseImg.setImage(image, for: .normal)
         
-        if(rocket.moving) {
+        if (rocket.moving) {
             runRocket()
         }
     }
     
     func pauseGame() {
-        if(rocket.moving) {
+        if (rocket.moving) {
             timerRocketRun.invalidate()
         }
         
         let image = UIImage(named: ImageName.playButton.rawValue)
         pauseImg.setImage(image, for: .normal)
-        
         pause = true
         self.performSegue(withIdentifier: SegueIdentifier.showMenu.rawValue, sender: nil)
     }
     
     func finishGame() {
-        
         inGame = false
         self.rocket.moving = false
         rocket.resetParameters()
@@ -329,13 +317,12 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             self.performSegue(withIdentifier: SegueIdentifier.showMenu.rawValue, sender: nil)
         }
         
-        if(showAdsIn3games >= 3) {
+        if (showAdsIn3games >= 3) {
             if interstitial.isReady {
                 interstitial.present(fromRootViewController: self)
             }
             showAdsIn3games = 0
-        }
-        else {
+        } else {
             showAdsIn3games += 1
         }
     }
@@ -545,10 +532,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         gcVC.viewState = .leaderboards
         gcVC.leaderboardIdentifier = LEADERBOARD_ID
         present(gcVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func checkGCLeaderboard(_ sender: AnyObject) {
-        showGCBoard()
     }
 }
 
