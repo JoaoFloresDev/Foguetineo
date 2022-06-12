@@ -19,13 +19,12 @@ enum SegueIdentifier: String {
 enum ImageName: String {
     case rocketWhiteTap
     case rocketPinkTap
-    case twoTapImg1
-    case twoTapImg2
-    case twoTapImg3
+    case twoTapImg
     case rotateImage
     case disc1
     case playButton
     case pauseButton
     case rocketPink
     case rocketWhite
+    case releaseImage
 }

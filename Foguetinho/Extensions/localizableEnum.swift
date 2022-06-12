@@ -14,6 +14,7 @@ enum Text: String  {
     case tapTutorialPinkMode
     case currentScore
     case bestScore
+    case releaseWhiteMode
     
     func localized() -> String {
         return self.rawValue.localized()

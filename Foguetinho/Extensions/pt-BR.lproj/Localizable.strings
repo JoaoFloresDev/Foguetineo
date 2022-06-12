@@ -6,8 +6,9 @@
   Copyright © 2022 Joao Flores. All rights reserved.
 */
 
-"rotateTutorialWhiteMode" = "Rotacione e solte \nUse dois dedos";
+"rotateTutorialWhiteMode" = "Rotacione para mirar \nUse dois dedos";
 "rotateTutorialPinkMode" = "Rotacione para mirar\nUse dois dedos";
 "tapTutorialPinkMode" = "Toque para voar";
+"releaseWhiteMode" = "Solte os dedos para voar";
 "currentScore" = "Sua pontuação";
 "bestScore" = "Melhor pontuação";

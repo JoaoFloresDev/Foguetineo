@@ -6,8 +6,9 @@
   Copyright © 2022 Joao Flores. All rights reserved.
 */
 
-"rotateTutorialWhiteMode" = "Rotate and release\nUse two fingers";
+"rotateTutorialWhiteMode" = "Rotate to aim\nUse two fingers";
 "rotateTutorialPinkMode" = "Rotate to aim\nUse two fingers";
+"releaseWhiteMode" = "Release to fly";
 "tapTutorialPinkMode" = "Tap to fly";
 "currentScore" = "Your Score";
 "bestScore" = "Best Score";

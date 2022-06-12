@@ -13,6 +13,7 @@ enum GestureAnimationState {
     case end
     case rotate
     case tap
+    case release
 }
 
 class GestureAnimationView: UIView {
@@ -22,6 +23,7 @@ class GestureAnimationView: UIView {
     
     var atualRotationGesture: CGFloat = CGFloat(0)
     var timerTutotial: Timer?
+    var currentState: GestureAnimationState = .end
     
     func setup() {
         TitleLabel.text = Text.rotateTutorialWhiteMode.localized()
@@ -37,17 +39,28 @@ class GestureAnimationView: UIView {
         }
     }
     
-    var random = 0
+    var imageIndex = 0
     @objc func animateGestureTap() {
-        random += 1
-        random = random == 3 ? 0 : random
-        switch random {
+        imageIndex += 1
+        imageIndex = imageIndex == 3 ? 0 : imageIndex
+        switch imageIndex {
         case 0:
-            guideImage.image = UIImage(named: ImageName.twoTapImg1.rawValue)
+            guideImage.image = UIImage(named: ImageName.twoTapImg.rawValue+"1")
         case 1:
-            guideImage.image = UIImage(named: ImageName.twoTapImg2.rawValue)
+            guideImage.image = UIImage(named: ImageName.twoTapImg.rawValue+"2")
         default:
-            guideImage.image = UIImage(named: ImageName.twoTapImg3.rawValue)
+            guideImage.image = UIImage(named: ImageName.twoTapImg.rawValue+"3")
+        }
+    }
+    
+    @objc func releaseGestureTap() {
+        imageIndex += 1
+        imageIndex = imageIndex == 3 ? 0 : imageIndex
+        switch imageIndex {
+        case 0:
+            guideImage.image = UIImage(named: ImageName.releaseImage.rawValue+"1")
+        default:
+            guideImage.image = UIImage(named: ImageName.releaseImage.rawValue+"2")
         }
     }
     
@@ -55,17 +68,45 @@ class GestureAnimationView: UIView {
         self.isHidden = true
     }
     
-    func startTutorial() {
+    func rotateTutorial() {
+        if currentState == .rotate {
+            return
+        }
+        currentState = .rotate
+        
         self.isHidden = false
         timerTutotial?.invalidate()
         guideImage.image = UIImage(named: ImageName.rotateImage.rawValue)
         timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
+        TitleLabel.text = Text.rotateTutorialWhiteMode.localized()
     }
     
     func tapTutorial() {
+        if currentState == .tap {
+            return
+        }
+        currentState = .tap
+        
+        self.isHidden = false
         timerTutotial?.invalidate()
-        guideImage.image = UIImage(named: ImageName.twoTapImg1.rawValue)
-        timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureTap), userInfo: nil, repeats: true)
+        imageIndex = 1
+        guideImage.image = UIImage(named: ImageName.twoTapImg.rawValue+"1")
+        timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.releaseGestureTap), userInfo: nil, repeats: true)
+        TitleLabel.text = Text.tapTutorialPinkMode.localized()
+    }
+    
+    func releaseTutorial() {
+        if currentState == .release {
+            return
+        }
+        currentState = .release
+        
+        self.isHidden = false
+        timerTutotial?.invalidate()
+        imageIndex = 1
+        guideImage.image = UIImage(named: ImageName.releaseImage.rawValue+"1")
+        timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.releaseGestureTap), userInfo: nil, repeats: true)
+        TitleLabel.text = Text.releaseWhiteMode.localized()
     }
 }
 

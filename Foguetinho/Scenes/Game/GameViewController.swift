@@ -29,7 +29,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var tutorialView: GestureAnimationView = {
         let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
         myView.setup()
-        myView.startTutorial()
+        myView.rotateTutorial()
         return myView
     }()
     
@@ -118,7 +118,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         let verticalConstraint = tutorialView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         let leftConstraint = tutorialView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         let rightConstraint = tutorialView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-//        let heightConstraint = tutorialView.heightAnchor.constraint(equalTo: tutorialView.widthAnchor, multiplier: 0.8)
         view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint])
     }
     
@@ -154,7 +153,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     private func replayUpdateState() {
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
             inGame = true
-            tutorialView.startTutorial()
+            tutorialView.rotateTutorial()
         } else if(pause) {
             returnToGame()
         }
@@ -203,7 +202,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
             self.rocket.rotate(rotation: rotation)
             gesture.rotation = 0
         }
-        
+        if rocketMode == .white {
+            tutorialView.releaseTutorial()
+        }
         if gesture.state == .ended {
             if rocketMode == .white {
                 tutorialView.endTutorial()
