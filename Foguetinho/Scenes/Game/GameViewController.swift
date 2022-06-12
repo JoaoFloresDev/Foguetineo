@@ -40,10 +40,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var points: Int = 0
     var timerRocketRun: Timer!
     var timerSoundBackground: Timer!
-    var timerTutotial: Timer!
-    var timerAlphaMenu: Timer!
-    var TutorialRotate = true
-    var TutorialTap = true
     var soundActive = true
     var inGame = true
     var pause = false
@@ -67,9 +63,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Tint Color
-        gestureRotateImg.tintColor = .lightGray
-        
         // Set Background
         let random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
@@ -90,12 +83,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         
         setupSounds()
         
-        initTutorial()
-        
         backGroundImg.layer.zPosition = -11
-        gestureRotateImg.layer.zPosition = -9
-        gestureTapImg.layer.zPosition = -9
-        labelTutorial.layer.zPosition = -9
         rocketImg.layer.zPosition = -10
         boxImg.layer.zPosition = -10
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(GameViewController.rotate(_:)))
@@ -122,6 +110,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         let rightConstraint = myView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         let heightConstraint = myView.heightAnchor.constraint(equalTo: myView.widthAnchor)
         view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint,heightConstraint])
+        myView.setup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -144,9 +133,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         }
     }
     
-    @IBOutlet weak var labelTutorial: UILabel!
-    @IBOutlet weak var gestureTapImg: UIImageView!
-    @IBOutlet weak var gestureRotateImg: UIImageView!
     @IBOutlet weak var rocketImg: UIImageView!
     @IBOutlet weak var boxImg: UIImageView!
     @IBOutlet weak var backGroundImg: UIImageView!
@@ -164,18 +150,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         }
     }
     
-    @IBAction func information(_ sender: Any) {
-        
-        self.performSegue(withIdentifier: SegueIdentifier.goInformations.rawValue,
-                          sender: nil)
-    }
-    
     private func replayUpdateState() {
         if(!inGame && !pause) { // jogo estava no menu e jogador iniciou nova partida
-            TutorialRotate = true
-            TutorialTap = true
             inGame = true
-            initTutorial()
         } else if(pause) {
             returnToGame()
         }
@@ -193,11 +170,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     func tap() {
         if(!pause){
-            if(TutorialTap && !TutorialRotate) {
-                TutorialEnding()
-                runRocket()
-                
-            } else if(!TutorialRotate && !TutorialTap && !rocket.moving && inGame) {
+            if(!rocket.moving && inGame) {
                 runRocket()
             }
             
@@ -220,10 +193,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     @objc func tap (_ gesture:UITapGestureRecognizer) {
-        if(!TutorialRotate && !TutorialTap && !rocket.moving && inGame && !pause && rocketMode == .white) || (rocketMode == .pink && !pause && !TutorialRotate) {
-            if(TutorialTap) {
-                TutorialEnding()
-            }
+        if(!rocket.moving && inGame && !pause && rocketMode == .white) || (rocketMode == .pink && !pause) {
             tap()
         }
     }
@@ -236,19 +206,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         }
         
         if gesture.state == .ended {
-            if TutorialRotate {
-                TutorialTapInit()
-            }
             if((rocketMode == .white && !pause)) {
-                if #available(iOS 11.0, *) {
-                    gestureRotateImg.tintColor = UIColor(named: "lightGreen")
-                } else {
-                    gestureRotateImg.tintColor = .green
-                }
-                
-                delayWithSeconds(0.3) {
-                    self.gestureRotateImg.tintColor = .lightGray
-                }
                 self.tap()
             }
         }
@@ -267,10 +225,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         self.timerRocketRun = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(self.checkRocket), userInfo: nil, repeats: true)
         
         if(tutorialShowTimes < 2) {
-            TutorialRotate = true
-            TutorialTap = true
             inGame = true
-            initTutorial()
             tutorialShowTimes += 1
         }
     }
@@ -538,70 +493,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         }
     }
     
-    // MARK: - Tutorial Functions
-    
-    func initTutorial() {
-        tutorialShowTimes = 0
-        gestureRotateImg.alpha = 0.5
-        gestureTapImg.alpha = 0
-        labelTutorial.alpha = 1
-        self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/20))
-        atualRotationGesture += CGFloat(Double.pi/20)
-        
-        if(rocketMode == .white) {
-            labelTutorial.text = Text.rotateTutorialWhiteMode.localized()
-        } else {
-            labelTutorial.text = Text.rotateTutorialPinkMode.localized()
-        }
-        
-        if let timerTemp = self.timerTutotial {
-            timerTemp.invalidate()
-        }
-        self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
-    }
-    
-    @objc func animateGestureRotate() {
-        if(atualRotationGesture < CGFloat(Double.pi/10))
-        {
-            self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(Double.pi/10))
-            atualRotationGesture += CGFloat(Double.pi/10)
-        }
-        
-        else
-        {
-            self.gestureRotateImg.transform = self.gestureRotateImg.transform.rotated(by: CGFloat(-Double.pi/10))
-            atualRotationGesture -= CGFloat(Double.pi/10)
-        }
-    }
-    
-    @objc func animateGestureTap() {
-        if(gestureTapImg.image == (UIImage(named: ImageName.twoTapImg1.rawValue))) { gestureTapImg.image = (UIImage(named: ImageName.twoTapImg2.rawValue)) }
-        else if (gestureTapImg.image == (UIImage(named: ImageName.twoTapImg2.rawValue))) { gestureTapImg.image = (UIImage(named: ImageName.twoTapImg3.rawValue)) }
-        else { gestureTapImg.image = (UIImage(named: ImageName.twoTapImg1.rawValue)) }
-    }
-    
-    func TutorialTapInit() {
-        gestureRotateImg.alpha = 0
-        gestureTapImg.alpha = 0.5
-        timerTutotial.invalidate()
-        
-        self.timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureTap), userInfo: nil, repeats: true)
-        
-        TutorialRotate = false
-        labelTutorial.text = Text.tapTutorialPinkMode.localized()
-        
-        if(rocketMode == .white) {
-            TutorialEnding()
-        }
-    }
-    
-    func TutorialEnding() {
-        gestureTapImg.alpha = 0
-        timerTutotial.invalidate()
-        TutorialTap = false
-        labelTutorial.alpha = 0
-    }
-    
     //    Funções de utilidades
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
@@ -615,13 +506,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
-                // 1 Show login if player is not logged in
                 self.present(ViewController!, animated: true, completion: nil)
             } else if (localPlayer.isAuthenticated) {
-                // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true
-                
-                // Get the default leaderboard ID
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
                     if error != nil {
                         print(error)
@@ -636,9 +523,6 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     // MARK: - ADD 10 POINTS TO THE SCORE AND SUBMIT THE UPDATED SCORE TO GAME CENTER
     func addScoreAndSubmitToGC() {
-        // Add 10 points to current score
-        
-        // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
         bestScoreInt.value = Int64(points)
         GKScore.report([bestScoreInt]) { (error) in

@@ -15,7 +15,25 @@ class GestureAnimationView: UIView {
     @IBOutlet weak var guideImage: UIImageView!
     
     func setup() {
+        TitleLabel.text = Text.rotateTutorialWhiteMode.localized()
         
+        let timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
+    }
+    
+    var atualRotationGesture: CGFloat = CGFloat(0)
+    
+    @objc func animateGestureRotate() {
+        if(atualRotationGesture < CGFloat(Double.pi/10))
+        {
+            self.guideImage.transform = self.guideImage.transform.rotated(by: CGFloat(Double.pi/10))
+            atualRotationGesture += CGFloat(Double.pi/10)
+        }
+        
+        else
+        {
+            self.guideImage.transform = self.guideImage.transform.rotated(by: CGFloat(-Double.pi/10))
+            atualRotationGesture -= CGFloat(Double.pi/10)
+        }
     }
 }
 
