@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c1c-cy-jbZ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tutorial View Controller-->
+        <scene sceneID="XV9-km-XJO">
+            <objects>
+                <viewController id="c1c-cy-jbZ" customClass="TutorialViewController" customModule="Foguetinho" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5eG-za-9dy"/>
+                        <viewControllerLayoutGuide type="bottom" id="hK5-WC-Sv3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VDH-dm-A4b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background0" translatesAutoresizingMaskIntoConstraints="NO" id="lmD-X5-cG9">
+                                <rect key="frame" x="0.0" y="-45" width="414" height="986"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rocketWhite1" translatesAutoresizingMaskIntoConstraints="NO" id="0Hh-J5-Aco">
+                                <rect key="frame" x="176" y="936" width="62" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="disc1" translatesAutoresizingMaskIntoConstraints="NO" id="dun-cm-53W">
+                                <rect key="frame" x="18" y="576" width="104" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPM-Ex-TgY">
+                                <rect key="frame" x="48" y="606" width="42" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb5-iK-jim">
+                                <rect key="frame" x="24" y="790" width="366" height="56"/>
+                                <color key="backgroundColor" red="0.28419235349999999" green="0.071940295400000007" blue="0.30158263439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="4fy-dr-khh"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Pular tutorial">
+                                    <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="skeepTutorial:" destination="c1c-cy-jbZ" eventType="touchUpInside" id="v9N-5s-tBo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Eyp-yn-kVY"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="lmD-X5-cG9" firstAttribute="height" secondItem="VDH-dm-A4b" secondAttribute="height" multiplier="1.1" id="02k-Jh-auV"/>
+                            <constraint firstItem="bb5-iK-jim" firstAttribute="leading" secondItem="Eyp-yn-kVY" secondAttribute="leading" constant="24" id="5ac-mX-6bL"/>
+                            <constraint firstItem="lmD-X5-cG9" firstAttribute="centerX" secondItem="VDH-dm-A4b" secondAttribute="centerX" id="Bhe-IQ-MbS"/>
+                            <constraint firstItem="lmD-X5-cG9" firstAttribute="width" secondItem="VDH-dm-A4b" secondAttribute="width" id="U3e-CQ-lDw"/>
+                            <constraint firstItem="lmD-X5-cG9" firstAttribute="centerY" secondItem="VDH-dm-A4b" secondAttribute="centerY" id="nBE-8C-yDG"/>
+                            <constraint firstItem="Eyp-yn-kVY" firstAttribute="bottom" secondItem="bb5-iK-jim" secondAttribute="bottom" constant="16" id="oS9-6T-LFy"/>
+                            <constraint firstItem="Eyp-yn-kVY" firstAttribute="trailing" secondItem="bb5-iK-jim" secondAttribute="trailing" constant="24" id="vWD-dv-CU4"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="41G-8b-XKt" appends="YES" id="vQI-nB-X3E"/>
+                        </connections>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="backGroundImg" destination="lmD-X5-cG9" id="3ew-eq-Wpl"/>
+                        <outlet property="boxImg" destination="dun-cm-53W" id="Ef2-OM-M5y"/>
+                        <outlet property="labelBox" destination="ZPM-Ex-TgY" id="dRM-it-Xyf"/>
+                        <outlet property="rocketImg" destination="0Hh-J5-Aco" id="mzB-v4-vAy"/>
+                        <outlet property="skeepTutorialButton" destination="bb5-iK-jim" id="gae-rj-h1r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wsb-kd-ZSj" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="41G-8b-XKt"/>
+            </objects>
+            <point key="canvasLocation" x="318.84057971014494" y="57.589285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background0" width="4834" height="3217"/>
+        <image name="disc1" width="307" height="308"/>
+        <image name="rocketWhite1" width="432" height="724"/>
+    </resources>
+</document>

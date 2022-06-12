@@ -101,6 +101,16 @@ class RocketClass {
         self.atualRotationRocket = .pi/2
     }
     
+    func flyInitPositionWithoutAnimation(duration: TimeInterval) {
+        
+            self.rocketImg.center.x = self.backGroundImg.center.x
+            self.rocketImg.center.y = self.backGroundImg.center.y*2 - self.rocketImg.frame.height*4
+            let rotation = -self.atualRotationRocket + .pi/2
+            self.rocketImg.transform = self.rocketImg.transform.rotated(by: rotation)
+        
+        self.atualRotationRocket = .pi/2
+    }
+    
     func stopAnimation() {
         self.rocketImg.stopAnimating()
     }

@@ -55,11 +55,11 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func information(_ sender: Any) {
-        self.performSegue(withIdentifier: "goInformations", sender: nil)
+        self.performSegue(withIdentifier: SegueIdentifier.goInformations.rawValue, sender: nil)
     }
     
-    @IBAction func replay(_ sender: Any) {
-        print("Replay")
+    @IBAction func tutorial(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToTutorial", sender: nil)
     }
     
     @IBAction func checkGCLeaderboard(_ sender: AnyObject) {

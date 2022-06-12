@@ -15,6 +15,8 @@
 		7367A0DE281F15A200300DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7367A0E0281F15A200300DE7 /* Localizable.strings */; };
 		7367A0E4281F161E00300DE7 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367A0E3281F161E00300DE7 /* String+extension.swift */; };
 		7367A0E6281F17A600300DE7 /* localizableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367A0E5281F17A600300DE7 /* localizableEnum.swift */; };
+		73E297712856A05D003719EB /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73E297702856A05C003719EB /* Tutorial.storyboard */; };
+		73E297732856A079003719EB /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E297722856A079003719EB /* TutorialViewController.swift */; };
 		73EC37B228519A190019D7D0 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EC37B128519A190019D7D0 /* Menu.storyboard */; };
 		73EC37B528519B430019D7D0 /* GestureAnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EC37B428519B430019D7D0 /* GestureAnimationView.xib */; };
 		73EC37B728519B4E0019D7D0 /* GestureAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC37B628519B4E0019D7D0 /* GestureAnimationView.swift */; };
@@ -71,6 +73,8 @@
 		7367A0E1281F15A600300DE7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7367A0E3281F161E00300DE7 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		7367A0E5281F17A600300DE7 /* localizableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = localizableEnum.swift; sourceTree = "<group>"; };
+		73E297702856A05C003719EB /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		73E297722856A079003719EB /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		73EC37B128519A190019D7D0 /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		73EC37B428519B430019D7D0 /* GestureAnimationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GestureAnimationView.xib; sourceTree = "<group>"; };
 		73EC37B628519B4E0019D7D0 /* GestureAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureAnimationView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		73117671285009AD004E1EF5 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				73E297702856A05C003719EB /* Tutorial.storyboard */,
+				73E297722856A079003719EB /* TutorialViewController.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				C4572B5922E6BFAD00E3E123 /* EndSound1.mp3 in Resources */,
 				C457756022A17DFA002F9C7C /* Assets.xcassets in Resources */,
 				C457755E22A17DF8002F9C7C /* Main.storyboard in Resources */,
+				73E297712856A05D003719EB /* Tutorial.storyboard in Resources */,
 				73EC37B528519B430019D7D0 /* GestureAnimationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +577,7 @@
 				C457755922A17DF8002F9C7C /* AppDelegate.swift in Sources */,
 				731176792850899B004E1EF5 /* Utils+Enum.swift in Sources */,
 				C481468722E4FA3A000AE680 /* RocketClass.swift in Sources */,
+				73E297732856A079003719EB /* TutorialViewController.swift in Sources */,
 				7311767628501EAE004E1EF5 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

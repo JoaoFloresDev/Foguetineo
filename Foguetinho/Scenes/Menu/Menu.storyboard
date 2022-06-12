@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +64,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="information"/>
                                         <connections>
-                                            <action selector="information:" destination="KS2-St-RVU" eventType="touchUpInside" id="8uL-0r-ehc"/>
+                                            <action selector="tutorial:" destination="KS2-St-RVU" eventType="touchUpInside" id="Z8s-yz-Ux6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgZ-EW-btz">
@@ -128,6 +129,16 @@
                                             <action selector="changeRocket:" destination="KS2-St-RVU" eventType="touchUpInside" id="MIc-HU-U81"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgC-v4-KhP">
+                                        <rect key="frame" x="333" y="30.5" width="20" height="20"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="information:" destination="KS2-St-RVU" eventType="touchUpInside" id="SoD-b3-cJA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="OPV-FD-1ZR" secondAttribute="trailing" constant="20" id="2IW-pX-VSU"/>
@@ -165,6 +176,7 @@
                                     <constraint firstItem="IJU-Ux-hze" firstAttribute="height" secondItem="ohv-L6-Viy" secondAttribute="height" id="oeG-G1-VjB"/>
                                     <constraint firstAttribute="trailing" secondItem="6CT-cK-jNC" secondAttribute="trailing" constant="20" id="onz-wM-CZd"/>
                                     <constraint firstItem="d7S-ca-bfd" firstAttribute="leading" secondItem="UVD-aq-cLH" secondAttribute="leading" constant="20" id="pDS-S7-iEA"/>
+                                    <constraint firstAttribute="trailing" secondItem="QgC-v4-KhP" secondAttribute="trailing" constant="20" id="qH9-ei-veL"/>
                                     <constraint firstItem="N3K-Z3-DRQ" firstAttribute="leading" secondItem="UVD-aq-cLH" secondAttribute="leading" constant="20" id="rDE-AA-f9h"/>
                                     <constraint firstItem="4Lh-lg-JFV" firstAttribute="centerX" secondItem="FKy-dW-Zb1" secondAttribute="centerX" multiplier="0.9" id="sET-yP-PzN"/>
                                     <constraint firstAttribute="width" secondItem="UVD-aq-cLH" secondAttribute="height" multiplier="1:1.35" id="tKe-VX-eA6"/>
@@ -173,6 +185,7 @@
                                     <constraint firstItem="IJU-Ux-hze" firstAttribute="centerY" secondItem="ohv-L6-Viy" secondAttribute="centerY" id="vjx-6d-Pel"/>
                                     <constraint firstItem="IJU-Ux-hze" firstAttribute="width" secondItem="ohv-L6-Viy" secondAttribute="width" multiplier="2" id="x6K-ap-kQz"/>
                                     <constraint firstAttribute="bottom" secondItem="d21-k9-oKD" secondAttribute="bottom" constant="30" id="yxK-JK-Y57"/>
+                                    <constraint firstItem="QgC-v4-KhP" firstAttribute="centerY" secondItem="Eb9-63-3k1" secondAttribute="centerY" multiplier="0.9" id="zen-3o-bKR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -203,12 +216,13 @@
                         <outletCollection property="changeRocketNext" destination="4Lh-lg-JFV" collectionClass="NSMutableArray" id="zB4-Oq-gjf"/>
                         <outletCollection property="changeRocketNext" destination="IJU-Ux-hze" collectionClass="NSMutableArray" id="FLn-hY-8O5"/>
                         <segue destination="sZT-cK-72L" kind="show" identifier="goInformations" id="paI-oL-Z4J"/>
+                        <segue destination="0Jg-YL-Shk" kind="presentation" identifier="goToTutorial" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="shr-3C-yJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJS-R9-ZWk" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer numberOfTapsRequired="2" id="XvS-kV-G7M"/>
             </objects>
-            <point key="canvasLocation" x="1222" y="58"/>
+            <point key="canvasLocation" x="1221.7391304347827" y="57.589285714285708"/>
         </scene>
         <!--Credits-->
         <scene sceneID="W8h-Gs-DgI">
@@ -220,6 +234,16 @@
             </objects>
             <point key="canvasLocation" x="1873" y="58"/>
         </scene>
+        <!--Tutorial-->
+        <scene sceneID="z3V-MH-IDv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tutorial" id="0Jg-YL-Shk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yJT-qK-WhO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3O-PL-4ez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="145"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Background0" width="4834" height="3217"/>
@@ -230,5 +254,8 @@
         <image name="next2" width="512" height="512"/>
         <image name="ranking" width="512" height="512"/>
         <image name="replay" width="512" height="512"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
