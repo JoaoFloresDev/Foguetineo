@@ -40,7 +40,7 @@ class GestureAnimationView: UIView {
     var random = 0
     @objc func animateGestureTap() {
         random += 1
-        random = random == 3 ? 0 : random 
+        random = random == 3 ? 0 : random
         switch random {
         case 0:
             guideImage.image = UIImage(named: ImageName.twoTapImg1.rawValue)
@@ -58,13 +58,14 @@ class GestureAnimationView: UIView {
     func startTutorial() {
         self.isHidden = false
         timerTutotial?.invalidate()
+        guideImage.image = UIImage(named: ImageName.rotateImage.rawValue)
         timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
     }
     
-    func rotateTutorial() {
+    func tapTutorial() {
         timerTutotial?.invalidate()
         guideImage.image = UIImage(named: ImageName.twoTapImg1.rawValue)
-        timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
+        timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureTap), userInfo: nil, repeats: true)
     }
 }
 

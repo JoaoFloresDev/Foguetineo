@@ -28,6 +28,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     
     var tutorialView: GestureAnimationView = {
         let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
+        myView.setup()
         myView.startTutorial()
         return myView
     }()
@@ -49,7 +50,17 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     var pause = false
     var rocket:RocketClass!
     var box:BoxClass!
-    var rocketMode: RocketMode = .white
+    var rocketMode: RocketMode = .white {
+        didSet {
+            switch rocketMode {
+            case .white:
+                rocketImg.image = UIImage(named: ImageName.rocketWhite.rawValue+"1")
+            default:
+                rocketImg.image = UIImage(named: ImageName.rocketPink.rawValue+"1")
+            }
+        }
+    }
+    
     var velAnimateArrow = 0
     var distAnimateArrow = 0
     
@@ -107,8 +118,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         let verticalConstraint = tutorialView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         let leftConstraint = tutorialView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         let rightConstraint = tutorialView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        let heightConstraint = tutorialView.heightAnchor.constraint(equalTo: tutorialView.widthAnchor)
-        view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint,heightConstraint])
+//        let heightConstraint = tutorialView.heightAnchor.constraint(equalTo: tutorialView.widthAnchor, multiplier: 0.8)
+        view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint])
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,6 +177,7 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
                 if(rocketMode == .white) {
                     rocketImg.image = (UIImage(named: ImageName.rocketWhiteTap.rawValue)!)
                 } else {
+                    tutorialView.endTutorial()
                     rocketImg.image = (UIImage(named: ImageName.rocketPinkTap.rawValue)!)
                 }
                 
@@ -197,13 +209,8 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
                 tutorialView.endTutorial()
                 self.tap()
             } else {
-                tutorialView.endTutorial()
+                tutorialView.tapTutorial()
             }
-//            if((rocketMode == .white && !pause)) {
-//                self.tap()
-//            } else {
-//
-//            }
         }
     }
     

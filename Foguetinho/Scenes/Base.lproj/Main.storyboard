@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background0" translatesAutoresizingMaskIntoConstraints="NO" id="qTe-el-mFu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="-45" width="414" height="986"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rocketWhite1" translatesAutoresizingMaskIntoConstraints="NO" id="60x-cq-umf">
                                 <rect key="frame" x="176" y="936" width="62" height="62"/>
@@ -53,7 +53,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="qTe-el-mFu" firstAttribute="height" secondItem="ZV1-FS-n3c" secondAttribute="height" id="AGu-ok-v3n"/>
+                            <constraint firstItem="qTe-el-mFu" firstAttribute="height" secondItem="ZV1-FS-n3c" secondAttribute="height" multiplier="1.1" id="AGu-ok-v3n"/>
                             <constraint firstItem="qTe-el-mFu" firstAttribute="centerX" secondItem="ZV1-FS-n3c" secondAttribute="centerX" id="ESR-xf-gnK"/>
                             <constraint firstItem="qTe-el-mFu" firstAttribute="centerY" secondItem="ZV1-FS-n3c" secondAttribute="centerY" id="XWO-QY-RXy"/>
                             <constraint firstItem="eH0-lk-AuD" firstAttribute="trailing" secondItem="AOX-sb-msE" secondAttribute="trailing" constant="15" id="Xjm-0x-M9z"/>

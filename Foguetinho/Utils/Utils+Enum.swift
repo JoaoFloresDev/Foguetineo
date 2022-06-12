@@ -22,6 +22,7 @@ enum ImageName: String {
     case twoTapImg1
     case twoTapImg2
     case twoTapImg3
+    case rotateImage
     case disc1
     case playButton
     case pauseButton

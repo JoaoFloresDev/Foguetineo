@@ -42,11 +42,11 @@ class RocketClass {
         var images: [UIImage] = []
         if(mode == .pink) {
             for i in 1...2 {
-                images.append(UIImage(named: ImageName.rocketPink.rawValue+"\(i)")!)
+                images.append(UIImage(named: ImageName.rocketPink.rawValue+"\(i)") ?? UIImage())
             }
         } else {
             for i in 1...2 {
-                images.append(UIImage(named: ImageName.rocketWhite.rawValue+"\(i)")!)
+                images.append(UIImage(named: ImageName.rocketWhite.rawValue+"\(i)") ?? UIImage())
             }
         }
         
