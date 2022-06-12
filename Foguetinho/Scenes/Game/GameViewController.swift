@@ -78,14 +78,16 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         super.viewDidLoad()
         
         DispatchQueue.main.async {
+            let olderUser = IntDefault.olderUser.getValue()
             if IntDefault.olderUser.getValue() < 3 {
-                self.performSegue(withIdentifier: "goToTutorial", sender: nil)
+                self.performSegue(withIdentifier: SegueIdentifier.goToTutorial.rawValue, sender: nil)
                 self.delayWithSeconds(0.5) {
                     self.hideGameView.isHidden = true
                 }
             } else {
                 self.hideGameView.isHidden = true
             }
+            IntDefault.olderUser.setValue(value: olderUser + 1)
         }
         
         // Set Background

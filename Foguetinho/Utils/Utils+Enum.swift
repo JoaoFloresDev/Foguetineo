@@ -14,6 +14,7 @@ enum RocketMode {
 enum SegueIdentifier: String {
     case goInformations
     case showMenu
+    case goToTutorial
 }
 
 enum ImageName: String {

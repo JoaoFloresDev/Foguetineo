@@ -107,8 +107,7 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         skeepTutorialButton.layer.shadowOpacity = 1
         skeepTutorialButton.layer.shadowRadius = 5
         skeepTutorialButton.layer.masksToBounds = false
-        skeepTutorialButton.setTitle("Skeep  tutorial", for: .normal)
-
+        skeepTutorialButton.setTitle(Text.skipTutorial.localized(), for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -195,7 +194,8 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         }
         if gesture.state == .ended {
             if rocketMode == .white {
-                tutorialView.endTutorial()
+//                tutorialView.endTutorial()
+                tutorialView.rotateTutorial()
                 self.tap()
             } else {
                 tutorialView.tapTutorial()
