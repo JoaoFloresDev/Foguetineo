@@ -110,6 +110,18 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         distAnimateArrow = 0
         
         self.rocket.flyInitPosition(duration: TimeInterval(0.5))
+        
+        let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
+        
+        view.addSubview(myView)
+        
+        myView.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = myView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let verticalConstraint = myView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        let leftConstraint = myView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        let rightConstraint = myView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        let heightConstraint = myView.heightAnchor.constraint(equalTo: myView.widthAnchor)
+        view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint,heightConstraint])
     }
     
     override func viewDidAppear(_ animated: Bool) {
