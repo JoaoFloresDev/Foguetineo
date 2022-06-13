@@ -22,12 +22,6 @@ class TutorialViewController: UIViewController {
     }()
     
     var showAdsIn3games = 0
-    var audioEnd1:    AVAudioPlayer!
-    var audioEnd2:  AVAudioPlayer!
-    var audioPlayer1: AVAudioPlayer!
-    var audioPlayer2: AVAudioPlayer!
-    var audioPlayer3: AVAudioPlayer!
-    var audioPlayerActual: AVAudioPlayer!
     var audioRocket: AVAudioPlayer!
     var audioBox:    AVAudioPlayer!
     var points: Int = 0
@@ -110,9 +104,16 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var pauseImg: UIButton!
     
     @IBOutlet weak var skeepTutorialButton: UIButton!
+    
     @IBAction func skeepTutorial(_ sender: Any) {
         self.modalPresentationStyle = .overCurrentContext
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.inGame = false
+            self.soundActive = false
+            self.willMove(toParent: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
+        }
     }
     
     private func replayUpdateState() {
@@ -172,7 +173,6 @@ class TutorialViewController: UIViewController {
         }
         if gesture.state == .ended {
             if rocketMode == .white {
-//                tutorialView.endTutorial()
                 tutorialView.rotateTutorial()
                 self.tap()
             } else {
@@ -286,82 +286,7 @@ class TutorialViewController: UIViewController {
         labelBox.text = String(points)
     }
     
-    //    Funções do som
-    func desativeSound() {
-        soundActive = false
-        audioPlayerActual.volume = 0
-    }
-    
-    func activeSound() {
-        soundActive = true
-        audioPlayerActual.volume = 0.8
-    }
-    
-    
-    @objc func soundBg() {
-        self.audioPlayerActual.volume = 0
-        if( self.audioPlayerActual == self.audioPlayer1)
-        {
-            self.audioPlayerActual = self.audioPlayer2
-            self.audioPlayerActual.volume = 0.8
-        }
-        
-        else if(self.audioPlayerActual == self.audioPlayer2)
-        {
-            self.audioPlayerActual = self.audioPlayer3
-            self.audioPlayerActual.volume = 0.8
-        }
-        else
-        {
-            self.audioPlayerActual = self.audioPlayer1
-            self.audioPlayerActual.volume = 0.8
-        }
-        self.audioPlayerActual.play()
-        
-        if(!self.soundActive)
-        {
-            self.audioPlayerActual.volume = 0
-        }
-    }
-    
     func setupSounds() {
-        do{
-            let path = Bundle.main.path(forResource:"Dark_Tranquility" , ofType: "mp3")!
-            let url = URL(fileURLWithPath: path)
-            audioPlayer1 = try AVAudioPlayer(contentsOf: url)
-            audioPlayer1.prepareToPlay()
-        }
-        catch{
-            print(error)
-        }
-        
-        
-        do{
-            let path = Bundle.main.path(forResource:"Chosen_One" , ofType: "mp3")!
-            let url = URL(fileURLWithPath: path)
-            audioPlayer2 = try AVAudioPlayer(contentsOf: url)
-            audioPlayer2.prepareToPlay()
-        }
-        catch{
-            print(error)
-        }
-        
-        do{
-            let path = Bundle.main.path(forResource:"A_Fever" , ofType: "mp3")!
-            let url = URL(fileURLWithPath: path)
-            audioPlayer3 = try AVAudioPlayer(contentsOf: url)
-            audioPlayer3.volume = 0.3
-            audioPlayer3.prepareToPlay()
-        }
-        catch{
-            print(error)
-        }
-        
-        audioPlayerActual = audioPlayer1
-        audioPlayerActual.volume = 0.8
-        audioPlayerActual.play()
-        
-        self.timerSoundBackground = Timer.scheduledTimer(timeInterval: 170, target: self, selector: #selector(self.soundBg), userInfo: nil, repeats: true)
         
         do{
             let path = Bundle.main.path(forResource:"disparoFoguete" , ofType: "mp3")!
@@ -385,27 +310,6 @@ class TutorialViewController: UIViewController {
             print(error)
         }
         
-        do{
-            let path = Bundle.main.path(forResource:"EndSound1" , ofType: "mp3")!
-            let url = URL(fileURLWithPath: path)
-            audioEnd1 = try AVAudioPlayer(contentsOf: url)
-            audioEnd1.volume = 0.2
-            audioEnd1.prepareToPlay()
-        }
-        catch{
-            print(error)
-        }
-        
-        do{
-            let path = Bundle.main.path(forResource:"EndSound2" , ofType: "mp3")!
-            let url = URL(fileURLWithPath: path)
-            audioEnd2 = try AVAudioPlayer(contentsOf: url)
-            audioEnd2.volume = 0.2
-            audioEnd2.prepareToPlay()
-        }
-        catch{
-            print(error)
-        }
     }
     
     //    Funções de utilidades
