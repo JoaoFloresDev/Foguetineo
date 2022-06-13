@@ -12,7 +12,7 @@ import AVFoundation
 import StoreKit
 import GoogleMobileAds
 
-class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, GADInterstitialDelegate {
+class TutorialViewController: UIViewController {
     
     var tutorialView: GestureAnimationView = {
         let myView = Bundle.loadView(fromNib: "GestureAnimationView", withType: GestureAnimationView.self)
@@ -52,14 +52,7 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
     var velAnimateArrow = 0
     var distAnimateArrow = 0
     
-    // game center
-    var gcEnabled = Bool() // Check if the user has Game Center enabled
-    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    
     var score = 0
-    
-    // IMPORTANT: replace the red string below with your own Leaderboard ID (the one you've set in iTunes Connect)
-    var LEADERBOARD_ID = "com.joaoFlores.Foguetinho.Ranking"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,9 +60,6 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         // Set Background
         let random = Int.random(in: 0 ..< 2)
         backGroundImg.image = UIImage(named: "Background\(random)")
-        
-        // Call the GC authentication controller
-        authenticateLocalPlayer()
         
         rocket = RocketClass(rocketImg: self.rocketImg, backGroundImg: self.backGroundImg)
         box = BoxClass(boxImg: self.boxImg, labelBox: self.labelBox, backGroundImg: self.backGroundImg)
@@ -84,8 +74,6 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(TutorialViewController.tap(_:)))
         self.view.addGestureRecognizer(tap)
-        
-        addScoreAndSubmitToGC()
         
         velAnimateArrow = 10
         distAnimateArrow = 0
@@ -112,16 +100,6 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == SegueIdentifier.showMenu.rawValue) {
-            if let nextViewController = segue.destination as? MenuViewController {
-                nextViewController.dataSource = self
-                nextViewController.delegate = self
-                nextViewController.modalPresentationStyle = .overCurrentContext
-                    }
-        }
     }
     
     @IBOutlet weak var rocketImg: UIImageView!
@@ -240,8 +218,6 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
             if(soundActive){ audioBox.play() }
             points += 1
             
-            addScoreAndSubmitToGC()
-            
             box.atualizeLabelBox(points: points)
             box.atualizePositionBox(sizeScreen: self.backGroundImg.frame.size)
             box.atualizeColorBox()
@@ -278,40 +254,6 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         pause = true
         self.performSegue(withIdentifier: SegueIdentifier.showMenu.rawValue, sender: nil)
     }
-    
-//    func finishGame() {
-//        inGame = false
-//        self.rocket.moving = false
-//        rocket.resetParameters()
-//        box.resetParameters()
-//        timerRocketRun.invalidate()
-//        let distX = self.rocket.rocketImg.center.x - self.backGroundImg.center.x
-//        let distY = self.rocket.rocketImg.center.y - self.backGroundImg.center.y*2 + self.rocketImg.frame.height*1.5
-//        var duration = sqrt(distX*distX + distY*distY)/500
-//        duration = 0.5
-//        self.rocket.flyInitPosition(duration: TimeInterval(duration))
-//
-//        self.atualizeBestScore()
-//
-//        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-//
-//        delayWithSeconds(TimeInterval(duration + 0.5)) {
-//            self.boxImg.image = (UIImage(named: ImageName.disc1.rawValue)!)
-//            self.labelBox.font = UIFont(name:"Futura", size: 30)
-//            self.box.atualizeLabelBox(points: self.points)
-//
-//            self.performSegue(withIdentifier: SegueIdentifier.showMenu.rawValue, sender: nil)
-//        }
-//
-//        if (showAdsIn3games >= 3) {
-//            if interstitial.isReady {
-//                interstitial.present(fromRootViewController: self)
-//            }
-//            showAdsIn3games = 0
-//        } else {
-//            showAdsIn3games += 1
-//        }
-//    }
     
     @objc func loop(){
         
@@ -471,76 +413,5 @@ class TutorialViewController: UIViewController,GKGameCenterControllerDelegate, G
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             completion()
         }
-    }
-    
-    // MARK: - AUTHENTICATE LOCAL PLAYER
-    func authenticateLocalPlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.local
-        
-        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
-            if((ViewController) != nil) {
-                self.present(ViewController!, animated: true, completion: nil)
-            } else if (localPlayer.isAuthenticated) {
-                self.gcEnabled = true
-                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
-                    if error != nil {
-                        print(error)
-                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer ?? self.LEADERBOARD_ID }
-                })
-            } else {
-                self.gcEnabled = false
-                print("Local player could not be authenticated!")
-            }
-        }
-    }
-    
-    // MARK: - ADD 10 POINTS TO THE SCORE AND SUBMIT THE UPDATED SCORE TO GAME CENTER
-    func addScoreAndSubmitToGC() {
-        let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
-        bestScoreInt.value = Int64(points)
-        GKScore.report([bestScoreInt]) { (error) in
-            if error != nil {
-                print(error!.localizedDescription)
-            } else {
-                print("Best Score submitted to your Leaderboard!")
-            }
-        }
-    }
-    
-    // Delegate to dismiss the GC controller
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    private func showGCBoard() {
-        let gcVC = GKGameCenterViewController()
-        gcVC.gameCenterDelegate = self
-        gcVC.viewState = .leaderboards
-        gcVC.leaderboardIdentifier = LEADERBOARD_ID
-        present(gcVC, animated: true, completion: nil)
-    }
-}
-
-extension TutorialViewController: MenuViewControllerDelegate {
-    func updateRocketMode(mode: RocketMode) {
-        rocketMode = mode
-    }
-    
-    func returnTapped() {
-        replayUpdateState()
-    }
-}
-
-extension TutorialViewController: MenuViewControllerDataSource {
-    func currentRocketMode() -> RocketMode {
-        return rocketMode
-    }
-    
-    func currentScore() -> String {
-        return String(points)
-    }
-    
-    func bestScore() -> String {
-        return String(IntDefault.BS.getValue())
     }
 }
