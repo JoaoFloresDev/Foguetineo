@@ -30,12 +30,23 @@ class GestureAnimationView: UIView {
     }
     
     @objc func animateGestureRotate() {
-        if (atualRotationGesture < CGFloat(Double.pi/10)) {
-            self.guideImage.transform = self.guideImage.transform.rotated(by: CGFloat(Double.pi/10))
-            atualRotationGesture += CGFloat(Double.pi/10)
-        } else {
-            self.guideImage.transform = self.guideImage.transform.rotated(by: CGFloat(-Double.pi/10))
-            atualRotationGesture -= CGFloat(Double.pi/10)
+        let originalCenter = guideImage.center
+        let upCenter = CGPoint(x: guideImage.center.x, y: guideImage.center.y - 10)
+        let downCenter = CGPoint(x: guideImage.center.x, y: guideImage.center.y + 20)
+
+        // Animação para subir
+        UIView.animate(withDuration: 0.5, animations: {
+            self.guideImage.center = upCenter
+        }) { (_) in
+            // Animação para descer
+            UIView.animate(withDuration: 0.5) {
+                self.guideImage.center = downCenter
+            } completion: { _ in
+                // Retorna à posição original
+                UIView.animate(withDuration: 0.5) {
+                    self.guideImage.center = originalCenter
+                }
+            }
         }
     }
     
@@ -58,9 +69,9 @@ class GestureAnimationView: UIView {
         imageIndex = imageIndex == 3 ? 0 : imageIndex
         switch imageIndex {
         case 0:
-            guideImage.image = UIImage(named: ImageName.releaseImage.rawValue+"1")
+            guideImage.image = UIImage(named: "twoTapImg1")
         default:
-            guideImage.image = UIImage(named: ImageName.releaseImage.rawValue+"2")
+            guideImage.image = UIImage(named: "twoTapImg2")
         }
     }
     
@@ -76,8 +87,11 @@ class GestureAnimationView: UIView {
         
         self.isHidden = false
         timerTutotial?.invalidate()
-        guideImage.image = UIImage(named: ImageName.rotateImage.rawValue)
-        timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
+        guideImage.image = UIImage(named: "twoTapImg2")
+        
+        animateGestureRotate()
+        timerTutotial = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.animateGestureRotate), userInfo: nil, repeats: true)
+        
         TitleLabel.text = Text.rotateTutorialWhiteMode.localized()
     }
     
@@ -104,7 +118,7 @@ class GestureAnimationView: UIView {
         self.isHidden = false
         timerTutotial?.invalidate()
         imageIndex = 1
-        guideImage.image = UIImage(named: ImageName.releaseImage.rawValue+"1")
+        guideImage.image = UIImage(named: "twoTapImg11")
         timerTutotial = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.releaseGestureTap), userInfo: nil, repeats: true)
         TitleLabel.text = Text.releaseWhiteMode.localized()
     }

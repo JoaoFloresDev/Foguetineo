@@ -116,6 +116,9 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         let rotate = UIRotationGestureRecognizer(target: self, action: #selector(GameViewController.rotate(_:)))
         self.view.addGestureRecognizer(rotate)
         
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        self.view.addGestureRecognizer(panGestureRecognizer)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(GameViewController.tap(_:)))
         self.view.addGestureRecognizer(tap)
         
@@ -135,6 +138,44 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
         let leftConstraint = tutorialView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         let rightConstraint = tutorialView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         view.addConstraints([horizontalConstraint, verticalConstraint, leftConstraint, rightConstraint])
+    }
+    
+    private var initialTouchPoint: CGPoint = CGPoint.zero
+    
+    @objc private func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if rocketMode != .white {
+            return
+        }
+        let currentTouchPoint = gestureRecognizer.location(in: self.view)
+
+        // Quando o gesto começa, armazenamos o ponto inicial
+        if gestureRecognizer.state == .began {
+            initialTouchPoint = currentTouchPoint
+        }
+
+        let distance = calculateDistance(from: initialTouchPoint, to: currentTouchPoint)
+        
+        if !pause {
+            let rotation = distance / 50
+            self.rocket.rotate(rotation: rotation)
+            initialTouchPoint = gestureRecognizer.location(in: self.view)
+        }
+        if rocketMode == .white {
+            tutorialView.releaseTutorial()
+        }
+        if gestureRecognizer.state == .ended {
+            if rocketMode == .white {
+                tutorialView.endTutorial()
+                self.tap()
+            } else {
+                tutorialView.tapTutorial()
+            }
+        }
+    }
+
+    // Função para calcular a distância entre dois pontos
+    private func calculateDistance(from startPoint: CGPoint, to endPoint: CGPoint) -> CGFloat {
+        return endPoint.y - startPoint.y
     }
     
     override func didReceiveMemoryWarning() {
@@ -213,13 +254,13 @@ class GameViewController: UIViewController,GKGameCenterControllerDelegate, GADIn
     }
     
     @objc func rotate (_ gesture:UIRotationGestureRecognizer) {
+        if rocketMode == .white {
+            return
+        }
         if !pause {
             let rotation = gesture.rotation * 6
             self.rocket.rotate(rotation: rotation)
             gesture.rotation = 0
-        }
-        if rocketMode == .white {
-            tutorialView.releaseTutorial()
         }
         if gesture.state == .ended {
             if rocketMode == .white {

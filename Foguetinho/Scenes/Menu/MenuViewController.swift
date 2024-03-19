@@ -31,22 +31,6 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var labelScore: UILabel!
     @IBOutlet weak var labelBestScore: UILabel!
     @IBOutlet weak var changeRocketImg: UIButton!
-    @IBOutlet var changeRocketNext: [UIButton]!
-    
-    // MARK: Actions
-    @IBAction func changeRocket(_ sender: UIButton) {
-        if(changeRocketNext[0].alpha == 1) {
-            if(dataSource?.currentRocketMode() == .white) {
-                let image = UIImage(named: "ChangeRocketPink")
-                changeRocketImg.setImage(image, for: .normal)
-                delegate?.updateRocketMode(mode: .pink)
-            } else {
-                let image = UIImage(named: "ChangeRocketWhite")
-                changeRocketImg.setImage(image, for: .normal)
-                delegate?.updateRocketMode(mode: .white)
-            }
-        }
-    }
     
     @IBAction func playPause(_ sender: Any) {
         self.dismiss(animated: true) {

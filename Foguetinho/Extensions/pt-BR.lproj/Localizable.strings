@@ -6,10 +6,10 @@
   Copyright © 2022 Joao Flores. All rights reserved.
 */
 
-"rotateTutorialWhiteMode" = "Rotacione para mirar \nUse dois dedos";
+"rotateTutorialWhiteMode" = "Arraste o dedo na tela para rotacionar o foguete";
 "rotateTutorialPinkMode" = "Rotacione para mirar\nUse dois dedos";
-"tapTutorialPinkMode" = "Toque para voar";
-"releaseWhiteMode" = "Solte os dedos para voar";
+"tapTutorialPinkMode" = "Solte o dedo para voar";
+"releaseWhiteMode" = "Solte o dedo para voar";
 "currentScore" = "Sua pontuação";
 "bestScore" = "Melhor pontuação";
 "skipTutorial" = "Pular tutorial";

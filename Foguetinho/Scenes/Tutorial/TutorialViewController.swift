@@ -90,6 +90,47 @@ class TutorialViewController: UIViewController {
         skeepTutorialButton.layer.shadowRadius = 5
         skeepTutorialButton.layer.masksToBounds = false
         skeepTutorialButton.setTitle(Text.skipTutorial.localized(), for: .normal)
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        self.view.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    private var initialTouchPoint: CGPoint = CGPoint.zero
+    
+    @objc private func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if rocketMode != .white {
+            return
+        }
+        let currentTouchPoint = gestureRecognizer.location(in: self.view)
+
+        // Quando o gesto começa, armazenamos o ponto inicial
+        if gestureRecognizer.state == .began {
+            initialTouchPoint = currentTouchPoint
+        }
+
+        let distance = calculateDistance(from: initialTouchPoint, to: currentTouchPoint)
+        
+        if !pause {
+            let rotation = distance / 50
+            self.rocket.rotate(rotation: rotation)
+            initialTouchPoint = gestureRecognizer.location(in: self.view)
+        }
+        if rocketMode == .white {
+            tutorialView.releaseTutorial()
+        }
+        if gestureRecognizer.state == .ended {
+            if rocketMode == .white {
+                tutorialView.rotateTutorial()
+                self.tap()
+            } else {
+                tutorialView.tapTutorial()
+            }
+        }
+    }
+
+    // Função para calcular a distância entre dois pontos
+    private func calculateDistance(from startPoint: CGPoint, to endPoint: CGPoint) -> CGFloat {
+        return endPoint.y - startPoint.y
     }
     
     override func didReceiveMemoryWarning() {
@@ -163,6 +204,9 @@ class TutorialViewController: UIViewController {
     }
     
     @objc func rotate (_ gesture:UIRotationGestureRecognizer) {
+        if rocketMode == .white {
+            return
+        }
         if !pause {
             let rotation = gesture.rotation * 6
             self.rocket.rotate(rotation: rotation)
@@ -208,8 +252,8 @@ class TutorialViewController: UIViewController {
         
         let bgMinX = self.backGroundImg.center.x - backGroundImg.frame.width/2 - rocketImg.frame.width/5
         let bgMaxX = self.backGroundImg.center.x + backGroundImg.frame.width/2 + rocketImg.frame.width/5
-        let bgMinY = self.backGroundImg.center.y - backGroundImg.frame.height/2 - rocketImg.frame.height/5
-        let bgMaxY = self.backGroundImg.center.y + backGroundImg.frame.height/2 + rocketImg.frame.height/5
+        let bgMinY = self.backGroundImg.center.y - backGroundImg.frame.height/2 + 60
+        let bgMaxY = self.backGroundImg.center.y + backGroundImg.frame.height/2
         
         // foguete pegou alvo
         if (((rocketMinX >= boxMinX && rocketMinX <= boxMaxX) || (rocketMaxX >= boxMinX && rocketMaxX <= boxMaxX))
@@ -226,7 +270,7 @@ class TutorialViewController: UIViewController {
         
         // foguete na borda da tela
         else if ( rocketMinX <= bgMinX || rocketMaxX >= bgMaxX || rocketMinY <= bgMinY || rocketMaxY >= bgMaxY ) {
-            self.rocket.rotate(rotation: 80)
+            self.rocket.rotate(rotation: 90)
             self.tap()
         }
     }
